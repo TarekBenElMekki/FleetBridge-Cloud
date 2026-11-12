@@ -1,6 +1,8 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.join(__dirname,'..'),lib=require('../lib/demo');
+const gateway=require('../api/gateway');
+const route=(name)=>(req,res)=>gateway({...req,url:'/api/'+name,query:{route:name}},res);
 function call(handler,method='GET'){
   return new Promise((resolve,reject)=>{
     const req={method},headers={};const res={statusCode:200,setHeader(k,v){headers[k]=v;},end(body){try{resolve({status:this.statusCode,body:JSON.parse(body),headers});}catch(e){reject(e);}}};
@@ -15,14 +17,14 @@ test('demo fixtures are synthetic and do not contain candidate contact details',
  for(const row of lib.candidates)assert(!JSON.stringify(row).match(/@|\+\d{7}/));
 });
 test('GET and POST separated for candidates',async()=>{
- const route=require('../api/candidates');
- const a=await call(route);assert.equal(a.status,200);assert.equal(a.body.records.length,5);
- const b=await call(route,'POST');assert.equal(b.status,405);assert.match(b.body.error,/read-only/);
+ const candidatesRoute=route('candidates');
+ const a=await call(candidatesRoute);assert.equal(a.status,200);assert.equal(a.body.records.length,5);
+ const b=await call(candidatesRoute,'POST');assert.equal(b.status,405);assert.match(b.body.error,/read-only/);
 });
 test('contract save and extension sync are blocked',async()=>{
- assert.equal((await call(require('../api/contracts'),'POST')).status,405);
- assert.equal((await call(require('../api/sync'),'POST')).status,405);
- assert.equal((await call(require('../api/auth/login'),'POST')).status,403);
+ assert.equal((await call(route('contracts'),'POST')).status,405);
+ assert.equal((await call(route('sync'),'POST')).status,405);
+ assert.equal((await call(route('auth/login'),'POST')).status,403);
 });
 test('no local authentication or SQLite shipped with web',()=>{
  for(const name of ['server.js','store.js','auth-gate.js','preview.js'])assert(!fs.existsSync(path.join(root,name)));
@@ -36,4 +38,4 @@ test('static Atlas and 4 workspaces included',()=>{
  assert(fs.existsSync(path.join(root,'public','atlas/data.json')));
 });
 
-test('auth endpoint never pretends the synthetic demo is a signed-in CRM',async()=>{const result=await call(require('../api/auth/status'));assert.equal(result.body.authenticated,false);assert.equal(result.body.preview,true);});
+test('auth endpoint never pretends the synthetic demo is a signed-in CRM',async()=>{const result=await call(route('auth/status'));assert.equal(result.body.authenticated,false);assert.equal(result.body.preview,true);});

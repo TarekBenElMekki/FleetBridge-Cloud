@@ -1,15 +1,96 @@
 {
-  "version": 2,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {"key":"X-Robots-Tag","value":"noindex, nofollow"},
-        {"key":"X-Content-Type-Options","value":"nosniff"},
-        {"key":"Referrer-Policy","value":"no-referrer"},
-        {"key":"X-Frame-Options","value":"DENY"},
-        {"key":"Cache-Control","value":"no-store"}
-      ]
-    }
-  ]
+    "version":  2,
+    "headers":  [
+                    {
+                        "source":  "/(.*)",
+                        "headers":  [
+                                        {
+                                            "key":  "X-Robots-Tag",
+                                            "value":  "noindex, nofollow"
+                                        },
+                                        {
+                                            "key":  "X-Content-Type-Options",
+                                            "value":  "nosniff"
+                                        },
+                                        {
+                                            "key":  "Referrer-Policy",
+                                            "value":  "no-referrer"
+                                        },
+                                        {
+                                            "key":  "X-Frame-Options",
+                                            "value":  "SAMEORIGIN"
+                                        },
+                                        {
+                                            "key":  "Cache-Control",
+                                            "value":  "no-store"
+                                        }
+                                    ]
+                    }
+                ],
+    "rewrites":  [
+                     {
+                         "source":  "/api/atlas-custom",
+                         "destination":  "/api/gateway?route=atlas-custom"
+                     },
+                     {
+                         "source":  "/api/atlas-prospect",
+                         "destination":  "/api/gateway?route=atlas-prospect"
+                     },
+                     {
+                         "source":  "/api/atlas-prospects",
+                         "destination":  "/api/gateway?route=atlas-prospects"
+                     },
+                     {
+                         "source":  "/api/auth/login",
+                         "destination":  "/api/gateway?route=auth/login"
+                     },
+                     {
+                         "source":  "/api/auth/logout",
+                         "destination":  "/api/gateway?route=auth/logout"
+                     },
+                     {
+                         "source":  "/api/auth/status",
+                         "destination":  "/api/gateway?route=auth/status"
+                     },
+                     {
+                         "source":  "/api/candidate",
+                         "destination":  "/api/gateway?route=candidate"
+                     },
+                     {
+                         "source":  "/api/candidates",
+                         "destination":  "/api/gateway?route=candidates"
+                     },
+                     {
+                         "source":  "/api/contracts",
+                         "destination":  "/api/gateway?route=contracts"
+                     },
+                     {
+                         "source":  "/api/establishments",
+                         "destination":  "/api/gateway?route=establishments"
+                     },
+                     {
+                         "source":  "/api/export",
+                         "destination":  "/api/gateway?route=export"
+                     },
+                     {
+                         "source":  "/api/health",
+                         "destination":  "/api/gateway?route=health"
+                     },
+                     {
+                         "source":  "/api/import",
+                         "destination":  "/api/gateway?route=import"
+                     },
+                     {
+                         "source":  "/api/pair-code",
+                         "destination":  "/api/gateway?route=pair-code"
+                     },
+                     {
+                         "source":  "/api/pair",
+                         "destination":  "/api/gateway?route=pair"
+                     },
+                     {
+                         "source":  "/api/sync",
+                         "destination":  "/api/gateway?route=sync"
+                     }
+                 ]
 }

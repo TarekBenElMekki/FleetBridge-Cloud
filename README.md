@@ -1,5 +1,12 @@
 # FleetBridge
 
+<!-- fleetbridge-live-demo:start -->
+[**Open FleetBridge live demo**](https://fleetbridge-cloud.vercel.app/#/candidates)
+
+Public, synthetic, read-only preview. No real candidate or contract data; no production authentication or data persistence. Source repository remains private.
+<!-- fleetbridge-live-demo:end -->
+
+
 Private, local-first recruitment operations source and a separate **synthetic, read-only Vercel web preview**.
 
 | Directory | Purpose |

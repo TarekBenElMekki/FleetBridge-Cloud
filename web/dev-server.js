@@ -9,9 +9,7 @@ const server=http.createServer((req,res)=>{
   if(name.startsWith('/api/')){
     const route=name.replace(/^\/api\//,'');
     if(!/^[a-z\-/]+$/.test(route)) {res.writeHead(404);res.end();return;}
-    const file=path.join(__dirname,'api',route+'.js');
-    if(!fs.existsSync(file)){res.writeHead(404);res.end();return;}
-    return require(file)(req,res);
+    return require('./api/gateway')(req,res);
   }
   const target=path.resolve(root,'.'+(name==='/'?'/index.html':name));
   if(!target.startsWith(root+path.sep)||!fs.existsSync(target)||!fs.statSync(target).isFile()){res.writeHead(404);res.end();return;}

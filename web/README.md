@@ -1,5 +1,12 @@
 # FleetBridge Vercel preview
 
+<!-- fleetbridge-live-demo:start -->
+[**Open FleetBridge live demo**](https://fleetbridge-cloud.vercel.app/#/candidates)
+
+Public, synthetic, read-only preview. No real candidate or contract data; no production authentication or data persistence. Source repository remains private.
+<!-- fleetbridge-live-demo:end -->
+
+
 Deploy from this `web` root on Vercel. This app is **read-only**, carries only synthetic candidate and contract records, and has no persistent database. Do not use it for actual recruitment records. No authentication is claimed or provided in this preview.
 
 Local dev (Node 20+): `npm run dev` then http://127.0.0.1:18760/.
