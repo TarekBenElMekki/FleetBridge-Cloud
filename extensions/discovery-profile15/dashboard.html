@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FleetBridge Database</title><link rel="stylesheet" href="style.css"></head>
+<body class="dashboard"><main class="shell">
+  <div class="eyebrow">FLEETBRIDGE / LOCAL DATABASE</div><div class="top"><div><h1>Candidate database</h1><p>Google links, search descriptions and manually approved professional details.</p></div><div>
+    <button id="exportCsv" class="primary">Export filtered CSV</button><button id="exportJson">Backup all as JSON</button><button id="restore">Restore JSON backup</button><input type="file" id="restoreFile" accept=".json,application/json" hidden>
+  </div></div>
+  <div class="stats"><div class="card metric"><strong id="total">0</strong> Total links</div><div class="card metric"><strong id="enriched">0</strong> Enriched profiles</div><div class="card metric"><strong id="pending">0</strong> Waiting for review</div></div>
+  <section class="card"><div class="row"><input id="search" class="compact" type="search" placeholder="Search names, titles, experience, descriptions"><select id="filter" class="compact"><option value="all">All profiles</option><option value="pending">Not enriched</option><option value="enriched">Enriched</option></select><button id="refresh">Refresh</button><button id="sidePanel" class="secondary">Open review sidebar</button></div>
+    <div class="meta" id="visibleCount"></div><div id="message" role="status" class="notice">All records remain on this device. Download a JSON backup regularly.</div>
+    <div class="table-wrap"><table><thead><tr><th>Candidate / Profile</th><th>Public Google description</th><th>Location</th><th>Google score</th><th>Review status</th><th>Recruiter notes</th><th>Last seen</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+  </section><small>CSV opens in Excel or imports into Google Sheets. No remote sync. Restore merges matching profile URLs and preserves your existing local records.</small>
+</main><script src="experience_metrics.js"></script><script src="core.js"></script><script src="db.js"></script><script src="dashboard.js"></script></body></html>

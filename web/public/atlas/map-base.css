@@ -1,0 +1,6 @@
+/* Offline Natural Earth vector basemap. */
+#map.leaflet-container{background:#dceaf0}
+.leaflet-overlay-pane svg{width:auto!important;height:auto!important;min-width:0!important;min-height:0!important}
+.country-label{background:transparent!important;border:0!important;display:flex;align-items:center;justify-content:center;white-space:nowrap;pointer-events:none;color:#92a6ab;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.6px;text-shadow:0 1px 2px #fff,0 -1px 2px #fff}
+.country-label span{display:block;max-width:105px;overflow:hidden;text-overflow:ellipsis;text-align:center}
+@media(max-width:700px){.country-label{font-size:8px;letter-spacing:.7px}}

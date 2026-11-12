@@ -1,0 +1,34 @@
+/* FleetBridge V2.2 — light-only Atlas, coordinated with Desktop shell */
+:root,html[data-theme=light]{color-scheme:light;--a-bg:#f4f6f8;--a-panel:#fff;--a-raised:#f3f6f8;--a-input:#fff;--a-text:#354b60;--a-heading:#19354a;--a-muted:#667b8b;--a-subtle:#8495a2;--a-line:#d9e2e8;--a-accent:#1d5b76;--a-accent-bg:#eaf2f6;--a-hover:#f2f7fa;--a-map-bg:#eef2f3}
+html,body,.workspace,.app-shell{background:#f4f6f8!important;color-scheme:light!important;color:#354b60}
+html.embedded .topbar,html.embedded .rail,html.embedded .metrics,html.embedded .main-footer{display:none!important}
+html.embedded .app-shell,html.embedded .workspace{height:100dvh!important;min-height:0!important}
+html.embedded .atlas-layout{height:100%!important;min-height:0!important;border:0!important}
+.atlas-layout,.left-panel,.inspector,.map-column{border-color:#d9e2e8!important}
+.left-panel,.inspector{background:#fff!important}
+.filter-intro,.result-head,.inspector-heading{background:#fff!important}
+.filter-intro,.result-head,.inspector-heading{border-bottom:1px solid #e0e6ed!important}
+.section-head h2,.result-head h2,.inspector-heading h2{font-weight:720;color:#213d53;font-size:13.5px}
+.result-item,.facet,.facet summary,.search-box,.sector-switch,.result-item.selected,.map-tool-btn,.map-toolbar button,.map-column button,.show-more,.export-inline,.ghost-button,.primary-button{border-radius:3px!important;box-shadow:none!important}
+.sector-switch{background:#f8fafb;border:1px solid #dfe6ec;padding:10px;margin:9px 0}
+.sector-switch label{color:#566e80;font-size:10px}
+.sector-switch select{border:1px solid #cddae2;border-radius:3px;background:#fff;color:#294557}
+.result-item{border-bottom:1px solid #e4e9ee;background:#fff}
+.result-item:nth-child(even){background:#fbfcfd}
+.result-item:hover{background:#edf3f7!important}
+.result-item.selected{background:#e8f1f6!important}
+.result-item.selected::before{background:#225873}
+.result-name,.company-name{color:#1a3b53;font-weight:720}
+.map-toolbar{background:#fff!important;border-color:#dbe3e9!important;min-height:43px}
+.map-title{font-size:11px;color:#1e4057}
+.map-tool-btn,.map-toolbar button{color:#35566e;border:1px solid #cfdbe3;background:#fff}
+.map-footer{background:#f8fafb!important;border-color:#dbe3e9!important;color:#687d8f}
+.geo-breadcrumb{color:#215c75;font-weight:700}
+.region-label span{color:#2b657d;font-size:11px}
+.department-label span{background:#fffffff0;color:#3b687c;border-radius:2px}
+.results-footer,.inspector-footer{background:#fafbfc!important}
+@media(max-width:900px){html.embedded .map-toolbar{padding:5px 7px}}
+
+/* Flat map detail surfaces: reduce excessive card rounding */
+.leaflet-popup-content-wrapper,.leaflet-popup-tip,.leaflet-control-zoom,.leaflet-control-zoom a,.leaflet-tooltip{border-radius:2px!important}
+.group-identity,.group-card,.facet,.results-panel,.result-head,.inspector-hero,.inspector-section,.map-tools select,.icon-button{border-radius:3px!important}

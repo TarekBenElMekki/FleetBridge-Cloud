@@ -1,0 +1,347 @@
+{
+  "groups": {
+    "RATP Group": "assets/logos/ratp-fr.png",
+    "Keolis": "assets/logos/keolis-com.png",
+    "Transdev": "assets/logos/transdev-com.png",
+    "Arriva": "assets/logos/arrivagroup-com.png",
+    "SNCF": "assets/logos/groupe-sncf-com.png",
+    "Nobina": "assets/logos/nobina-com.png",
+    "Go-Ahead": "assets/logos/go-ahead-com.png",
+    "Stagecoach": "assets/logos/stagecoachgroup-com.png",
+    "FirstGroup": "assets/logos/firstgroupplc-com.png",
+    "Mobico": "assets/logos/mobicogroup-com.png",
+    "ComfortDelGro": "assets/logos/comfortdelgro-com.png",
+    "ÖBB": "assets/logos/oebb-at.png",
+    "VR Group": "assets/logos/vrgroup-fi.png",
+    "Vy Group": "assets/logos/vy-no.png",
+    "Moventia": "assets/logos/moventia-es.png",
+    "Tide": "assets/logos/tide-no.png",
+    "Sporveien": "assets/logos/sporveien-no.png",
+    "Mutares": "assets/logos/mutares-com.png",
+    "Wiener Stadtwerke": "assets/logos/wienerstadtwerke-at.png",
+    "Hitachi Rail": "assets/logos/hitachirail-com.png",
+    "Connect Bus": "assets/logos/connectbus-no.png"
+  },
+  "operators": [
+    {
+      "pattern": "Berliner Verkehrsbetriebe|^BVG$",
+      "src": "assets/logos/bvg-de.png"
+    },
+    {
+      "pattern": "Hamburger Hochbahn",
+      "src": "assets/logos/hochbahn-de.png"
+    },
+    {
+      "pattern": "Münchner Verkehrsgesellschaft",
+      "src": "assets/logos/mvg-de.png"
+    },
+    {
+      "pattern": "Verkehrsgesellschaft Frankfurt",
+      "src": "assets/logos/vgf-ffm-de.png"
+    },
+    {
+      "pattern": "Kölner Verkehrs-Betriebe",
+      "src": "assets/logos/kvb-koeln.png"
+    },
+    {
+      "pattern": "Rheinbahn",
+      "src": "assets/logos/rheinbahn-de.png"
+    },
+    {
+      "pattern": "ÜSTRA",
+      "src": "assets/logos/uestra-de.png"
+    },
+    {
+      "pattern": "Leipziger Verkehrsbetriebe",
+      "src": "assets/logos/l-de.png"
+    },
+    {
+      "pattern": "BOGESTRA",
+      "src": "assets/logos/bogestra-de.png"
+    },
+    {
+      "pattern": "Ruhrbahn",
+      "src": "assets/logos/ruhrbahn-de.png"
+    },
+    {
+      "pattern": "STIB|MIVB",
+      "src": "assets/logos/stib-mivb-be.png"
+    },
+    {
+      "pattern": "De Lijn",
+      "src": "assets/logos/delijn-be.png"
+    },
+    {
+      "pattern": "^TEC$",
+      "src": "assets/logos/letec-be.png"
+    },
+    {
+      "pattern": "SNCB|NMBS",
+      "src": "assets/logos/belgiantrain-be.png"
+    },
+    {
+      "pattern": "^GVB$",
+      "src": "assets/logos/gvb-nl.png"
+    },
+    {
+      "pattern": "^RET$",
+      "src": "assets/logos/ret-nl.png"
+    },
+    {
+      "pattern": "Wiener Linien",
+      "src": "assets/logos/wienerlinien-at.png"
+    },
+    {
+      "pattern": "Linz Linien",
+      "src": "assets/logos/linzag-at.png"
+    },
+    {
+      "pattern": "Innsbrucker Verkehrsbetriebe",
+      "src": "assets/logos/ivb-at.png"
+    },
+    {
+      "pattern": "Salzburg AG Verkehr",
+      "src": "assets/logos/salzburg-ag-at.png"
+    },
+    {
+      "pattern": "Transports Metropolitans de Barcelona",
+      "src": "assets/logos/tmb-cat.png"
+    },
+    {
+      "pattern": "Ferrocarrils de la Generalitat",
+      "src": "assets/logos/fgc-cat.png"
+    },
+    {
+      "pattern": "EMT Madrid",
+      "src": "assets/logos/emtmadrid-es.png"
+    },
+    {
+      "pattern": "Metro de Madrid",
+      "src": "assets/logos/metromadrid-es.png"
+    },
+    {
+      "pattern": "Renfe",
+      "src": "assets/logos/renfe-com.png"
+    },
+    {
+      "pattern": "Vectalia",
+      "src": "assets/logos/vectalia-es.png"
+    },
+    {
+      "pattern": "Metro Bilbao",
+      "src": "assets/logos/metrobilbao-eus.png"
+    },
+    {
+      "pattern": "Euskotren",
+      "src": "assets/logos/euskotren-eus.png"
+    },
+    {
+      "pattern": "^Carris$",
+      "src": "assets/logos/carris-pt.png"
+    },
+    {
+      "pattern": "Metropolitano de Lisboa",
+      "src": "assets/logos/metrolisboa-pt.png"
+    },
+    {
+      "pattern": "Comboios de Portugal",
+      "src": "assets/logos/cp-pt.png"
+    },
+    {
+      "pattern": "Metro do Porto",
+      "src": "assets/logos/metrodoporto-pt.png"
+    },
+    {
+      "pattern": "^TPER$",
+      "src": "assets/logos/tper-it.png"
+    },
+    {
+      "pattern": "^Cotral$",
+      "src": "assets/logos/cotralspa-it.png"
+    },
+    {
+      "pattern": "London Underground",
+      "src": "assets/logos/tfl-gov-uk.png"
+    },
+    {
+      "pattern": "Edinburgh Trams",
+      "src": "assets/logos/edinburghtrams-com.png"
+    },
+    {
+      "pattern": "Nottingham City Transport",
+      "src": "assets/logos/nctx-co-uk.png"
+    },
+    {
+      "pattern": "Dublin Bus",
+      "src": "assets/logos/dublinbus-ie.png"
+    },
+    {
+      "pattern": "Bus Éireann",
+      "src": "assets/logos/buseireann-ie.png"
+    },
+    {
+      "pattern": "Verkehrsbetriebe Zürich",
+      "src": "assets/logos/stadt-zuerich-ch.png"
+    },
+    {
+      "pattern": "Bernmobil",
+      "src": "assets/logos/bernmobil-ch.png"
+    },
+    {
+      "pattern": "Transports publics genevois",
+      "src": "assets/logos/tpg-ch.png"
+    },
+    {
+      "pattern": "Swiss Federal Railways",
+      "src": "assets/logos/sbb-ch.png"
+    },
+    {
+      "pattern": "^BLS$",
+      "src": "assets/logos/bls-ch.png"
+    },
+    {
+      "pattern": "^DSB$",
+      "src": "assets/logos/dsb-dk.png"
+    },
+    {
+      "pattern": "AarBus",
+      "src": "assets/logos/aarbus-dk.png"
+    },
+    {
+      "pattern": "^SJ$",
+      "src": "assets/logos/sj-se.png"
+    },
+    {
+      "pattern": "Regia Transport Electric",
+      "src": "assets/logos/rtec-md.png"
+    },
+    {
+      "pattern": "Stolichen Autotransport",
+      "src": "assets/logos/sofiatraffic-bg.png"
+    },
+    {
+      "pattern": "Stolichen Elektrotransport",
+      "src": "assets/logos/sofiatraffic-bg.png"
+    },
+    {
+      "pattern": "Metropoliten EAD",
+      "src": "assets/logos/metropolitan-bg.png"
+    },
+    {
+      "pattern": "Tallinna Linnatransport",
+      "src": "assets/logos/tlt-ee.png"
+    },
+    {
+      "pattern": "Lux Express",
+      "src": "assets/logos/luxexpress-eu.png"
+    },
+    {
+      "pattern": "Vilniaus viešasis transportas",
+      "src": "assets/logos/vilniausvt-lt.png"
+    },
+    {
+      "pattern": "Kauno autobusai",
+      "src": "assets/logos/kaunoautobusai-lt.png"
+    },
+    {
+      "pattern": "OSY —",
+      "src": "assets/logos/osy-gr.png"
+    },
+    {
+      "pattern": "STASY",
+      "src": "assets/logos/stasy-gr.png"
+    },
+    {
+      "pattern": "Strætó",
+      "src": "assets/logos/straeto-is.png"
+    },
+    {
+      "pattern": "^Dopravní podnik hl",
+      "src": "assets/logos/dpp-cz.png"
+    },
+    {
+      "pattern": "Dopravní podnik města Brna",
+      "src": "assets/logos/dpmb-cz.png"
+    },
+    {
+      "pattern": "Dopravní podnik Ostrava",
+      "src": "assets/logos/dpo-cz.png"
+    },
+    {
+      "pattern": "RegioJet",
+      "src": "assets/logos/regiojet-com.png"
+    },
+    {
+      "pattern": "Dopravný podnik Bratislava",
+      "src": "assets/logos/dpb-sk.png"
+    },
+    {
+      "pattern": "Železničná spoločnosť Slovensko",
+      "src": "assets/logos/zssk-sk.png"
+    },
+    {
+      "pattern": "Budapesti Közlekedési",
+      "src": "assets/logos/bkv-hu.png"
+    },
+    {
+      "pattern": "DKV Debrecen",
+      "src": "assets/logos/dkv-hu.png"
+    },
+    {
+      "pattern": "Societatea de Transport București",
+      "src": "assets/logos/stbsa-ro.png"
+    },
+    {
+      "pattern": "Zagrebački električni tramvaj",
+      "src": "assets/logos/zet-hr.png"
+    },
+    {
+      "pattern": "Ljubljanski potniški promet",
+      "src": "assets/logos/lpp-si.png"
+    },
+    {
+      "pattern": "Cyprus Public Transport",
+      "src": "assets/logos/publictransport-com-cy.png"
+    },
+    {
+      "pattern": "Metro İstanbul",
+      "src": "assets/logos/metro-istanbul.png"
+    },
+    {
+      "pattern": "Compagnie des Transports Strasbourgeois",
+      "src": "assets/logos/cts-strasbourg-eu.png"
+    },
+    {
+      "pattern": "EPIC Tisséo Voyageurs|Tisséo Voyageurs",
+      "src": "assets/logos/tisseo-fr.png"
+    },
+    {
+      "pattern": "Société.*SEMITAN|^Semitan",
+      "src": "assets/logos/tan-fr.png"
+    },
+    {
+      "pattern": "Régie des Transports Métropolitains",
+      "src": "assets/logos/rtm-fr.png"
+    },
+    {
+      "pattern": "Régie Ligne d.Azur",
+      "src": "assets/logos/lignesdazur-com.png"
+    },
+    {
+      "pattern": "Transports de l.Agglomération de Montpellier",
+      "src": "assets/logos/tam-voyages-com.png"
+    },
+    {
+      "pattern": "Société Intercommunale des Bus de la Région Annécienne",
+      "src": "assets/logos/sibra-fr.png"
+    },
+    {
+      "pattern": "Société des Transports Urbains de Colmar",
+      "src": "assets/logos/trace-colmar-fr.png"
+    },
+    {
+      "pattern": "Société des Transports en Commun de Limoges",
+      "src": "assets/logos/stcl-fr.png"
+    }
+  ]
+}

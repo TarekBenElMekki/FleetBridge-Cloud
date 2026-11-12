@@ -1,0 +1,106 @@
+/* FleetBridge 2.4 — company name readability + compact contract oversight. Light only. */
+:root{--contract-ink:#2e3a42;--contract-muted:#76828a;--contract-line:#e2e6e9;--contract-bg:#f6f7f8;--contract-green:#386951;--contract-green-bg:#eaf4ee;--contract-red:#925459;--contract-red-bg:#fbefef;--contract-amber:#846b3e;--contract-amber-bg:#f8f3e8}
+/* Readable employer names: two lines where needed, instead of silently cut text.
+   The company header gains space, while the remaining columns keep their identity. */
+.directory-panel table{min-width:950px!important}
+.directory-panel th:nth-child(1),.directory-panel td:nth-child(1){width:33%!important}
+.directory-panel th:nth-child(2),.directory-panel td:nth-child(2){width:12%!important}
+.directory-panel th:nth-child(3),.directory-panel td:nth-child(3){width:17%!important}
+.directory-panel th:nth-child(4),.directory-panel td:nth-child(4){width:17%!important}
+.directory-panel th:nth-child(5),.directory-panel td:nth-child(5){width:14%!important}
+.directory-panel th:nth-child(6),.directory-panel td:nth-child(6){width:7%!important}
+.directory-panel tbody td:first-child{white-space:normal!important;text-overflow:clip!important;overflow:visible!important;line-height:1.35!important}
+.directory-panel tbody td.company-strong{overflow-wrap:anywhere!important;word-break:normal!important;white-space:normal!important;font-weight:670!important;color:#293944!important;font-size:11.5px!important;max-width:none!important}
+.directory-panel tbody tr{height:auto!important;min-height:43px!important}
+.directory-panel tbody td{height:44px!important}
+.directory-panel .actions-col,.directory-panel td:last-child{white-space:nowrap!important}
+/* Hide unrelated header actions in the contract workspace. */
+body.contracts-mode .crm-actions,body.contracts-mode .atlas-actions{display:none!important}
+body.contracts-mode .contract-actions{display:flex!important}
+body:not(.contracts-mode) .contract-actions{display:none!important}
+.contract-actions .primary{height:27px!important;min-height:27px!important;padding:4px 10px!important;font-size:10.5px!important;border-radius:2px!important;background:#4b6373!important;border:1px solid #4b6373!important;color:#fff!important;font-weight:600!important;box-shadow:none!important}
+.contract-actions .primary:hover{background:#384d5a!important}
+/* Contracts does not simultaneously open Candidate and Company inspectors. */
+body.contracts-mode #inspector,body.contracts-mode .company-inspector{display:none!important}
+body:not(.contracts-mode) #contract-inspector{display:none!important}
+body.contracts-mode #contract-inspector:not(.open){display:none!important}
+body.contracts-mode #contract-inspector.open{display:flex!important;flex-direction:column}
+#contracts.view.active{display:flex;flex:1;min-height:0;flex-direction:column;overflow:hidden;padding:11px 13px!important}
+.contracts-main{width:100%;max-width:1270px;min-height:0;display:flex;flex:1;flex-direction:column;gap:9px;margin-right:auto}
+.contracts-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:2px 2px 3px;flex-shrink:0}
+.contracts-intro h1{font-size:14px!important;font-weight:680;color:#2b3740;letter-spacing:-.15px;margin:0 0 4px}
+.contracts-intro p{font-size:10px!important;color:#839098;margin:0}
+.contract-context{white-space:nowrap;padding-top:4px}
+.organization{flex-shrink:0;background:#fff;border:1px solid var(--contract-line);padding:8px 13px 11px;min-height:116px}
+.org-parent{height:23px;display:flex;align-items:center;justify-content:center;gap:11px;font-size:11px;color:#42515d;position:relative;margin-bottom:16px}
+.org-parent:after{content:'';position:absolute;bottom:-9px;left:50%;height:9px;border-left:1px solid #bfc9d0}
+.org-mini{font-size:8px;letter-spacing:.75px;font-weight:700;color:#8b979e}
+.org-parent strong{font-size:11px;font-weight:700}
+.org-parent>span:last-child{font-size:9px;color:#99a2a8}
+.org-branches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;position:relative}
+.org-branches:before{content:'';height:1px;background:#bfc9d0;left:16.666%;right:16.666%;top:-8px;position:absolute}
+.org-entity{position:relative;display:flex;justify-content:space-between;align-items:center;gap:8px;min-width:0;background:#f9fafb;border:1px solid #e0e5e8;border-radius:1px;padding:9px 11px;text-align:left;color:#384a54;cursor:pointer;font:inherit;min-height:38px}
+.org-entity:before{content:'';position:absolute;top:-9px;left:50%;height:9px;border-left:1px solid #c1cbd0}
+.org-entity:hover,.org-entity.is-active{background:#edf2f4;border-color:#aebfc9}
+.org-entity.is-active{box-shadow:inset 2px 0 #718896}
+.org-company{font-size:10.5px;font-weight:650;white-space:normal;line-height:1.25}
+.org-counters{font-size:9px;color:#8b99a0;text-align:right;white-space:nowrap}
+.contract-signals{display:flex;gap:0;border:1px solid var(--contract-line);background:#fff;color:#819099;flex-shrink:0;align-items:center;flex-wrap:wrap;min-height:34px}
+.contract-signals span{font-size:10px;white-space:nowrap;padding:6px 14px;border-right:1px solid #eef0f2;display:inline-flex;gap:6px;align-items:center}
+.contract-signals span:last-child{border-right:0}
+.contract-signals strong{font-size:11.5px;color:#36454e;font-weight:720;font-variant-numeric:tabular-nums}
+.contracts-directory{display:flex;min-height:0;flex:1;flex-direction:column;background:#fff;border:1px solid var(--contract-line);overflow:hidden}
+.contracts-table-heading{padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e5e9eb;min-height:38px;flex-shrink:0}
+.contracts-table-heading h2{margin:0;font-weight:660;font-size:12px;color:#34434b}
+.contracts-table-scroll{min-height:0;flex:1;overflow:auto!important;scrollbar-color:#d1d8dd transparent}
+.contracts-table{table-layout:fixed!important;width:100%!important;min-width:930px!important;border-spacing:0;border-collapse:separate!important}
+.contracts-table thead th{background:#f8f9fa!important;font-weight:650!important;color:#647580!important;text-align:left!important;padding:7px 9px!important;height:59px!important;vertical-align:middle;border-right:1px solid #edf0f2;border-bottom:1px solid #dde4e8;font-size:10px!important;position:sticky;top:0;z-index:5}
+.contracts-table thead th:last-child{border-right:0}
+.contracts-table td{height:54px!important;padding:5px 9px!important;border-bottom:1px solid #edf0f2!important;background:transparent!important;vertical-align:middle!important;font-size:10.5px!important;line-height:1.4;color:#63727d;white-space:normal;overflow:visible}
+.contracts-table .contract-record{cursor:pointer;background:#fff}
+.contracts-table .contract-record:nth-child(even){background:#fbfcfc}
+.contracts-table .contract-record:hover{background:#f0f4f6}
+.contract-candidate,.contract-date{display:block;font-size:10.8px!important;font-weight:690!important;color:#30424d;line-height:1.3;overflow-wrap:anywhere}
+.contract-client,.contract-company{display:block;line-height:1.35;overflow-wrap:anywhere}
+.contract-secondary{display:block;margin-top:3px;font-size:9.5px!important;color:#88969d;font-weight:450;line-height:1.35}
+.contract-column-hint{font-size:9.5px;color:#a6b0b6;font-weight:400;line-height:1.2}
+.contract-period,.hire-badge{display:inline-block;font-size:9.5px!important;font-weight:630!important;line-height:1.2;padding:3px 6px;border:1px solid #dfe4e7;border-radius:2px;background:#f3f5f6;color:#73838d;white-space:nowrap}
+.contract-period{margin-top:4px}
+.contract-period.soon{background:var(--contract-amber-bg);border-color:#e8dfcb;color:var(--contract-amber)}
+.contract-period.ended{background:#f7eff0;border-color:#ead7da;color:#8d5b5d}
+.hire-badge.yes{background:var(--contract-green-bg);border-color:#cbded1;color:var(--contract-green)}
+.hire-badge.no{background:var(--contract-red-bg);border-color:#ead2d4;color:var(--contract-red)}
+.hire-badge.pending{background:#f4f5f6;border-color:#e0e4e8;color:#7d8790}
+.contract-edit{font:inherit;font-size:10px;background:transparent;border:0;border-bottom:1px solid #92a8b5;color:#466375;padding:1px 0;cursor:pointer}
+.contract-edit:hover{color:#233e50}
+.contracts-empty{padding:30px;text-align:center;color:#7a8b95;font-size:11px}
+/* Editor: utilitarian, with clear section separators and fixed action row. */
+body.contracts-mode #contract-inspector.open{background:#fff!important;border-left:1px solid #e1e7e9!important;width:353px!important;max-width:40vw!important;min-width:325px;box-shadow:none!important;overflow:hidden;min-height:0}
+.contract-inspector .inspector-top{flex-shrink:0}
+.contract-form{display:flex;flex-direction:column;min-height:0;padding:0 16px 15px;overflow:auto;gap:10px}
+.contract-form-title{padding-top:12px;padding-bottom:5px;border-bottom:1px solid #edf0f1}
+.contract-form-title h2{font-size:14px!important;color:#2d3b45;margin:0 0 3px!important;font-weight:700}
+.contract-form-title p{font-size:10px;color:#8b98a0;margin:0}
+.contract-field{display:flex;flex-direction:column;gap:4px;color:#5b6973;font-weight:590;font-size:10.5px;min-width:0}
+.contract-field span{color:#a56464}
+.contract-field input,.contract-field select,.contract-field textarea{font-family:inherit;font-size:11px;color:#334752;background:#fff;border:1px solid #d7dfe4;border-radius:2px;min-height:29px;width:100%;padding:5px 7px;outline-offset:1px;box-shadow:none}
+.contract-field input:focus,.contract-field select:focus,.contract-field textarea:focus{outline:1px solid #aebec7;border-color:#99adb8}
+.contract-field input:disabled{background:#f0f3f5;color:#96a4ad}
+.contract-two-cols{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.contract-section-label{font-size:9px;font-weight:710;letter-spacing:.48px;color:#87949e;margin-top:6px;padding-top:9px;border-top:1px solid #e9edef}
+.contract-date-preview{padding:8px 9px;background:#f5f7f8;border-left:2px solid #aebcc5;color:#617784;font-size:10px;line-height:1.45}
+.contract-date-preview[data-state="soon"]{border-left-color:#b59a6a;background:#f9f7f1}
+.contract-date-preview[data-state="ended"]{border-left-color:#be8788;background:#fcf6f6}
+.contract-form-help{font-size:9.5px;line-height:1.45;color:#84919b;margin:0}
+.contract-error{padding:7px 9px;color:#8d464c;background:#fbf1f2;border:1px solid #e9ced1;font-size:10px}
+.contract-form-actions{display:flex;gap:8px;padding-top:5px}
+.contract-form-actions .primary,.contract-form-actions .soft{border-radius:2px;padding:8px 10px;font-size:10.5px;min-height:31px;box-shadow:none}
+.contract-form-actions .primary{background:#496575;color:#fff;border:1px solid #496575}
+.contract-form-actions .soft{border:1px solid #dce2e7;background:#fff;color:#667984}
+@media(max-width:1180px){.org-counters{font-size:8px}.contract-signals span{padding-inline:9px}}
+@media(max-width:900px){.contract-context{display:none}body.contracts-mode #contract-inspector.open{position:fixed;right:0;top:46px;bottom:0;max-width:95vw!important;width:min(365px,95vw)!important;min-width:0;z-index:55;box-shadow:-10px 0 26px #2536451a!important}}
+@media(max-width:700px){.org-branches{gap:4px}.org-entity{padding:7px;display:block}.org-counters{display:block;text-align:left;margin-top:3px}.contract-signals span{flex:1;justify-content:center}.contracts-intro h1{font-size:13px!important}}
+/* Fix the real truncation cause: the prior stylesheet transformed a TD into block. */
+.directory-panel tbody td.company-strong{display:table-cell!important;max-width:none!important;width:33%!important;overflow:visible!important;text-overflow:clip!important;white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important}
+
+.contracts-table tr.is-due td:first-child{box-shadow:inset 2px 0 #d6c5a4}

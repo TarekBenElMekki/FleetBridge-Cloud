@@ -1,0 +1,21 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),os=require('node:os'),fs=require('node:fs'),path=require('node:path');
+const {makeServer}=require('../server');const {createStore}=require('../store');
+test('PIN protects all data and page routes, login and logout work',async t=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'fbv21-auth-'));
+ const store=createStore(dir);const app=makeServer({port:0,store,pinAuth:true,pin:'1234'});
+ await app.listen();t.after(async()=>{await app.close();fs.rmSync(dir,{recursive:true,force:true});});
+ const base=`http://127.0.0.1:${app.server.address().port}`;
+ const unauth=await fetch(base+'/api/candidates');assert.equal(unauth.status,401);
+ const hidden=await fetch(base+'/atlas/data.json',{redirect:'manual'});assert.equal(hidden.status,302);assert.equal(hidden.headers.get('location'),'/login');
+ const root=await fetch(base+'/',{redirect:'manual'});assert.equal(root.status,302);
+ assert.equal((await fetch(base+'/login')).status,200);
+ const invalid=await fetch(base+'/api/auth/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({pin:'8888'})});assert.equal(invalid.status,401);
+ const res=await fetch(base+'/api/auth/login',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({pin:'1234'})});assert.equal(res.status,200);
+ const cookie=res.headers.get('set-cookie').split(';')[0];
+ assert.ok(res.headers.get('set-cookie').includes('HttpOnly'));assert.ok(res.headers.get('set-cookie').includes('SameSite=Strict'));
+ assert.equal((await fetch(base+'/api/candidates',{headers:{cookie}})).status,200);
+ assert.equal((await fetch(base+'/atlas/data.json',{headers:{cookie}})).status,200);
+ const logout=await fetch(base+'/api/auth/logout',{method:'POST',headers:{cookie,origin:base,'content-type':'application/json'},body:'{}'});assert.equal(logout.status,200);
+ assert.equal((await fetch(base+'/api/candidates',{headers:{cookie}})).status,401);
+});

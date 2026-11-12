@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FleetBridge Candidate Review</title><link rel="stylesheet" href="style.css"></head>
+<body class="panel"><main class="shell">
+  <div class="eyebrow">FLEETBRIDGE / CANDIDATE RESEARCH</div><h1>Candidate review</h1>
+  <p>Open the profile on the left. When its professional details are visible, click <b>Capture visible profile</b>. Nothing is extracted or saved automatically.</p>
+  <div class="row"><button id="dashboard" class="secondary">Candidate database / CSV</button><button id="rebuild">Rebuild pending queue</button></div>
+  <section class="card"><div class="meta" id="progress">Loading saved candidates…</div><h2 id="candidateTitle" class="title-break">—</h2><p id="candidateSnippet">—</p>
+    <div id="timer" class="notice">Open the LinkedIn profile when you are ready.</div>
+    <div class="row"><button id="openProfile" class="primary">Open profile on left</button><button id="previous">Previous</button><button id="next">Skip / Next</button></div>
+    <small>The optional 10-second timer never advances. You always decide when to capture or move on.</small>
+  </section>
+  <section class="card"><h2>1. Capture visible professional data</h2>
+    <p>Expand and scroll through <b>Experience</b> on LinkedIn. Capture again after scrolling if more positions become visible; your previous edits are kept.</p>
+    <button id="capture" class="primary" style="width:100%">Capture visible profile / capture again</button>
+    <div id="captureStatus" class="notice" role="status">No profile captured. The extension will ask once for LinkedIn page-reading permission.</div>
+  </section>
+  <section id="review" class="card hidden"><h2>2. Correct the extracted fields</h2>
+    <div class="meta" id="confidence"></div><p>Review the name, headline, location and complete experience timeline against the page on the left. You can capture again before saving.</p>
+    <div id="formFields" class="field-grid"></div>
+    <div class="experience-summary"><h3>Calculated experience</h3>
+      <div class="experience-stat"><span>Total work experience</span><strong id="totalWork">Unknown</strong></div>
+      <div class="experience-stat"><span>Latest employer</span><strong id="latestCompany">Unknown</strong></div>
+      <div class="experience-stat"><span>Latest role duration</span><strong id="latestDuration">Unknown</strong></div>
+      <small id="experienceNote" role="status">Enter dated work positions above to calculate.</small>
+    </div>
+    <div class="actions"><div class="row"><button id="save" class="secondary">Save only</button><button id="saveNext" class="primary">Save &amp; open next</button></div></div>
+    <small>Saving preserves the existing Google snippet, scores, notes, and review status. Only your edited professional fields are added.</small>
+  </section>
+  <div id="panelError" role="alert" class="notice hidden"></div>
+  <small>Browser-local database, no server. Export JSON backups from the database dashboard. This tool does not automatically visit LinkedIn profiles.</small>
+</main><script src="experience_metrics.js"></script><script src="core.js"></script><script src="db.js"></script><script src="profile_capture.js"></script><script src="panel.js"></script></body></html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FleetBridge Talent Workspace</title><link rel="stylesheet" href="style.css"></head>
+<body class="dashboard workspace"><main class="shell">
+  <div class="eyebrow">FLEETBRIDGE / TALENT</div>
+  <div class="top"><div><h1>Candidate workspace</h1><p>Capture in Chrome. Assess and decide here.</p></div>
+    <div class="row"><button id="sidePanel" class="secondary">Open capture</button><button id="exportCsv">Export CSV</button>
+      <button id="exportJson">Backup JSON</button><button id="restore">Restore</button><input type="file" id="restoreFile" accept=".json,application/json" hidden></div>
+  </div>
+  <div class="stats compact-stats">
+    <div class="card metric"><strong id="total">0</strong>Total profiles</div>
+    <div class="card metric"><strong id="captured">0</strong>Ready for review</div>
+    <div class="card metric"><strong id="enriched">0</strong>Reviewed</div>
+    <div class="card metric"><strong id="pending">0</strong>Not reviewed</div>
+  </div>
+  <div id="message" role="status" class="notice">Candidate records stay in this browser. Reported workplace city names may be checked against the French commune service.</div>
+  <section class="analytics-grid" aria-label="Recruitment analytics">
+    <div class="card analytics-card"><div class="analytics-heading"><h2>Experience distribution</h2><small id="experienceCoverage">Awaiting records</small></div><div id="experienceChart" class="analytics-bars"></div><small>Overlap-aware total dated experience, including internships and apprenticeships. Click a bar to filter.</small></div>
+    <div class="card analytics-card"><div class="analytics-heading"><h2>Workplace distances</h2><small id="distanceCoverage">Awaiting reviewed workplaces</small></div><div id="distanceChart" class="analytics-bars"></div><small>Greatest separation between recorded job locations, straight-line km. Not a residential relocation estimate.</small></div>
+    <div class="card analytics-card"><div class="analytics-heading"><h2>Recruitment stages</h2><small id="stageCoverage">Awaiting records</small></div><div id="stageChart" class="analytics-bars"></div><small>Current candidate follow-up status. Click a bar to filter.</small></div>
+    <div class="card analytics-card"><div class="analytics-heading"><h2>Employment categories</h2><small id="typeCoverage">Awaiting dated jobs</small></div><div id="typeChart" class="analytics-bars"></div><small>Count of captured roles by reported contract type; unspecified jobs remain separate. Click to filter.</small></div>
+  </section>
+  <div class="workspace-grid">
+    <aside id="inspector" class="card inspector-card">
+      <div class="eyebrow">CANDIDATE / REVIEW</div>
+      <h2 id="reviewTitle">Select a candidate</h2><div id="captureBadge" class="meta">Results appear here.</div>
+      <div class="response-grid">
+        <div class="response-tile"><span>Total experience</span><strong id="responseTotal">—</strong></div>
+        <div class="response-tile"><span>Latest employer</span><strong id="responseEmployer">—</strong><small id="responseDuration"></small></div>
+        <div class="response-tile wide"><span>Workplace history</span><strong id="responseMobility">—</strong></div>
+        <div class="response-tile wide"><span>France authorization route</span><strong id="responseWork">—</strong></div>
+      </div>
+      <div class="experience-type-summary" id="responseTypes">Experience categories will appear after profile capture.</div>
+      <div class="candidate-chart-grid" aria-label="Selected candidate career charts">
+        <section class="analytics-card candidate-analytics"><div class="analytics-heading"><h3>Experience by job</h3><small id="jobChartCoverage">Select a candidate</small></div><div id="candidateExperienceChart" class="analytics-bars"></div><small>Job periods may overlap; the total above counts overlapping months only once.</small></section>
+        <section class="analytics-card candidate-analytics"><div class="analytics-heading"><h3>Distance between workplaces</h3><small id="hopChartCoverage">Select a candidate</small></div><div id="candidateDistanceChart" class="analytics-bars"></div><small>Consecutive, non-overlapping jobs only; workplace change does not prove relocation.</small></section>
+      </div>
+      <div id="reviewFeedback" class="meta" role="status">Select a row to review its data.</div>
+      <div class="row review-toolbar"><button id="saveReview" class="primary">Save review</button><button id="analyzeWorkplaces">Analyze workplaces</button></div>
+      <button id="applyCapture" class="quiet-button hidden">Use new captured details</button>
+
+      <details id="profileDetails" class="edit-section"><summary>Professional profile</summary>
+        <label for="reviewName">Name</label><input id="reviewName">
+        <label for="reviewHeadline">Headline</label><textarea id="reviewHeadline" rows="2"></textarea>
+        <label for="reviewLocation">Location</label><input id="reviewLocation">
+        <label for="reviewExperience">Experience text</label><textarea id="reviewExperience" rows="7"></textarea>
+        <button id="parseTimeline" class="quiet-button">Update jobs from text</button>
+      </details>
+      <details id="jobsDetails" class="edit-section"><summary>Job timeline <span id="rolesCount" class="meta"></span></summary>
+        <div id="jobRecords" class="job-records"></div>
+        <button id="addJob" class="quiet-button">+ Add job</button>
+      </details>
+      <details id="mobilityDetails" class="edit-section"><summary>Geographic assessment</summary>
+        <p id="mobilityExplanation" class="meta">Analyze workplace locations to see evidence.</p>
+        <label for="destinationCity">Proposed city / France region</label><input id="destinationCity" placeholder="Lille, France">
+        <label for="currentResidence">Confirmed current residence (optional)</label><input id="currentResidence" placeholder="Not inferred from work history">
+        <label for="moveInterest">Candidate-reported willingness to relocate</label>
+        <select id="moveInterest"><option value="unknown">Unknown</option><option value="yes">Confirmed yes</option><option value="no">Confirmed no</option></select>
+      </details>
+      <details id="workDetails" class="edit-section"><summary>France work authorization checklist</summary>
+        <p id="workExplanation" class="meta">Administrative screening, never a visa probability.</p>
+        <label for="citizenshipGroup">Verified citizenship category</label><select id="citizenshipGroup"><option value="unknown">Unknown</option><option value="eu_eea_swiss">EU / EEA / Swiss</option><option value="non_eu">Other</option></select>
+        <label for="workRights">Verified French work rights</label><select id="workRights"><option value="unknown">Unknown</option><option value="verified_yes">Yes</option><option value="verified_no">No</option></select>
+        <label for="residenceStatus">Current residence</label><select id="residenceStatus"><option value="unknown">Unknown</option><option value="abroad">Outside France</option><option value="france">France</option></select>
+        <label for="jobTitleFrance">Proposed job</label><input id="jobTitleFrance" placeholder="Mécanicien poids lourds">
+        <label for="jobRegionFrance">Proposed French region</label><select id="jobRegionFrance"><option value="">Unknown</option></select>
+        <label for="contractType">Contract</label><select id="contractType"><option value="">Unknown</option><option value="CDI">CDI</option><option value="CDD">CDD</option><option value="other">Other</option></select>
+        <label for="employerApplies">Employer will apply</label><select id="employerApplies"><option value="unknown">Unknown</option><option value="yes">Confirmed yes</option><option value="no">No</option></select>
+        <label for="shortageRoute">Regional shortage route verified</label><select id="shortageRoute"><option value="unknown">Unknown</option><option value="yes">Yes</option><option value="no">No</option></select>
+        <label for="publicationRoute">Advertisement route verified</label><select id="publicationRoute"><option value="unknown">Unknown</option><option value="yes">Yes</option><option value="no">No</option></select>
+        <label for="driverQualification">Heavy-vehicle driver qualification</label><select id="driverQualification"><option value="not_applicable">Not applicable</option><option value="needs_check">Needs checking</option><option value="verified">Verified</option></select>
+        <button id="assessFrance" class="secondary">Assess route</button>
+      </details>
+      <details class="edit-section"><summary>Recruitment follow-up</summary>
+        <label for="reviewStatus">Status</label><select id="reviewStatus"><option value="new">New</option><option value="reviewing">Reviewing</option><option value="shortlisted">Shortlisted</option><option value="contacted">Contacted</option><option value="interview">Interview</option><option value="rejected">Rejected</option></select>
+        <label for="reviewNotes">Notes</label><textarea id="reviewNotes" rows="3"></textarea>
+      </details>
+      <small>Job locations are workplace evidence, not proof of home moves. No automatic decisions.</small>
+    </aside>
+    <section class="card results-card sheet-card">
+      <div class="sheet-toolbar"><input id="search" type="search" placeholder="Search name, skill, employer or city…" aria-label="Search candidates">
+        <label class="target-label" for="targetRole">Vacancy evidence <select id="targetRole" aria-label="Target job for keyword evidence"><option value="heavy_maintenance">Heavy-vehicle mechanic</option><option value="automation">Industrial automation</option><option value="electronics">Electronics / embedded</option><option value="bus_driver">Bus driver</option></select></label>
+        <button id="refresh" class="quiet-button">Refresh data</button></div>
+      <div class="sheet-filters" aria-label="Multiple-selection filters">
+        <div class="facet"><div class="facet-label">Capture status <button class="clear-facet" data-facet="capture">Clear</button></div><div id="facetCapture" class="facet-choices"></div></div>
+        <div class="facet"><div class="facet-label">Experience <button class="clear-facet" data-facet="experience">Clear</button></div><div id="facetExperience" class="facet-choices"></div></div>
+        <div class="facet"><div class="facet-label">Employment type <button class="clear-facet" data-facet="type">Clear</button></div><div id="facetType" class="facet-choices"></div></div>
+        <div class="facet"><div class="facet-label">Workplace distance <button class="clear-facet" data-facet="distance">Clear</button></div><div id="facetDistance" class="facet-choices"></div></div>
+        <div class="facet"><div class="facet-label">Vacancy keyword evidence <button class="clear-facet" data-facet="relevance">Clear</button></div><div id="facetRelevance" class="facet-choices"></div></div>
+        <div class="facet"><div class="facet-label">French region <button class="clear-facet" data-facet="region">Clear</button></div><div id="facetRegion" class="facet-choices"></div></div>
+        <div class="facet"><div class="facet-label">Follow-up stage <button class="clear-facet" data-facet="stage">Clear</button></div><div id="facetStage" class="facet-choices"></div></div>
+      </div>
+      <div class="view-strip"><div class="view-tabs" role="tablist" aria-label="Candidate views"><button id="tableView" class="view-tab is-active" role="tab" aria-selected="true">Spreadsheet</button><button id="mapView" class="view-tab" role="tab" aria-selected="false">Interactive map</button></div><span class="meta" id="visibleCount"></span></div>
+      <div id="tableSection" class="table-wrap sheet-wrap"><table aria-label="Filtered candidates"><thead><tr>
+        <th><button data-sort="name">Candidate ↕</button></th><th><button data-sort="city">Location ↕</button></th>
+        <th><button data-sort="years">Experience ↕</button></th><th>Other roles</th><th>Internships</th><th>Latest employer</th><th><button data-sort="distance">Workplace distance ↕</button></th><th>Mobility evidence</th>
+        <th>Vacancy keyword evidence</th><th>France authorization</th><th><button data-sort="stage">Stage ↕</button></th><th>Profile</th>
+        </tr></thead><tbody id="tableBody"></tbody></table></div>
+      <div id="mapSection" class="map-section hidden">
+        <div class="map-layer-bar"><label class="map-layer-check"><input type="checkbox" id="layerCandidates" checked> <span class="pin-legend candidate"></span>Candidates</label>
+          <label class="map-layer-check"><input type="checkbox" id="layerRatp" checked> <span class="pin-legend ratp"></span>RATP workplaces</label>
+          <button id="syncSites" class="quiet-button">Refresh official RATP sites</button></div>
+        <div class="map-site-facets"><div class="facet-label">Group entity (select multiple)</div><div id="facetCompany" class="facet-choices"></div>
+          <div class="facet-label">Workplace type (select multiple)</div><div id="facetSiteType" class="facet-choices"></div></div>
+        <div id="realMap" class="real-map" role="application" aria-label="Interactive map with candidate and RATP workplace pins"></div>
+        <div id="mapStatus" class="meta map-status" role="status">Loading source-backed RATP establishments…</div>
+        <small>Real map: drag to pan, scroll or use +/− to zoom, click thumbtacks to inspect. Candidate pins show approximate profile-listed city centers, not verified residences. Workplaces come from official registry records; coverage may be incomplete. Tiles © OpenStreetMap contributors.</small>
+      </div>
+    </section>
+  </div>
+  <small class="footer-note">Browser-local candidate records. Only reported place names are looked up using the French commune API; no full profiles are transmitted. Keyword evidence is not an automatic hiring decision.</small>
+</main>
+<script src="experience_metrics.js"></script><script src="career_intelligence.js"></script><script src="fr_geo.js"></script><script src="core.js"></script><script src="db.js"></script><script src="ratp_sites.js"></script><script src="real_map.js"></script><script src="talent_analytics.js"></script><script src="role_match.js"></script><script src="dashboard.js"></script><script src="review_workspace.js"></script>
+</body></html>

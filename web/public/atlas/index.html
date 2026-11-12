@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <script src="embed-init.js"></script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <title>FleetBridge · Transport Employer Atlas</title>
+  <meta name="description" content="A Europe-wide interactive atlas of public transport employers and operating companies, grouped by corporate ownership for recruitment prospecting.">
+  <link rel="stylesheet" href="assets/leaflet.css">
+  <link rel="stylesheet" href="assets/MarkerCluster.css">
+  <link rel="stylesheet" href="assets/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="map-base.css">
+  <link rel="stylesheet" href="brand-fullscreen.css">
+  <link rel="stylesheet" href="atlas-desktop.css">
+  <link rel="stylesheet" href="brand-2026.css">
+  <link rel="stylesheet" href="v2.css">
+  <link rel="stylesheet" href="v21.css">
+  <link rel="stylesheet" href="v22.css">
+  <link rel="stylesheet" href="v25.css">
+  <link rel="stylesheet" href="/atlas/web-preview.css">
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="rail" aria-label="Workspace">
+      <div class="rail-logo" title="FleetBridge"><img src="/fleetbridge-brand.png" alt="FleetBridge" width="42" height="42"></div>
+      <div class="rail-divider"></div>
+      <button type="button" class="rail-btn" id="goCRM" title="Return to Candidate CRM" aria-label="Return to Candidate CRM"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
+      <div class="rail-btn active" title="Employer atlas" aria-label="Employer atlas"><svg viewBox="0 0 24 24"><path d="m3 6 6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg></div>
+      <div class="rail-btn" title="Company intelligence" aria-label="Company intelligence"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="15" rx="2"/><path d="M8 6V3h8v3M3 12h18"/></svg></div>
+      <div class="rail-spacer"></div>
+      <div class="rail-bottom">FB</div>
+    </nav>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="heading">
+          <div class="breadcrumbs">WORKSPACE <span>/</span> INTELLIGENCE <span>/</span> EUROPEAN TRANSPORT</div>
+          <div class="heading-line"><h1>Employer atlas</h1><span class="version-pill">FLEETBRIDGE <b>01</b></span></div>
+          <p>Find operating companies. Understand ownership. Build your recruitment pipeline.</p>
+        </div>
+        <div class="top-actions">
+          <div class="data-pill"><span class="pulse"></span> Directory snapshot · 04 Nov 2026</div>
+          <button class="ghost-button" id="downloadTemplate" title="Download CSV columns to add employers or candidate locations"><svg viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"/></svg> CSV template</button>
+          <label class="primary-button import-label" for="fileImport"><svg viewBox="0 0 24 24"><path d="M12 20V8m-4 4 4-4 4 4M4 5v-2h16v2"/></svg> Import locations</label>
+          <input id="fileImport" type="file" accept=".csv,text/csv" hidden>
+        </div>
+      </header>
+      <div id="notice" class="notice" role="status" hidden></div>
+
+      <div class="metrics" id="metrics" aria-label="Directory summary">
+        <div class="metric"><div class="metric-label">EMPLOYER LOCATIONS <span>↗</span></div><div class="metric-number" id="metricVisible">—</div><div class="metric-help">In the current selection</div></div>
+        <div class="metric"><div class="metric-label">EUROPEAN MARKETS <span>◉</span></div><div class="metric-number" id="metricCountries">—</div><div class="metric-help">Countries represented</div></div>
+        <div class="metric"><div class="metric-label">OWNERSHIP NETWORKS <span>◎</span></div><div class="metric-number" id="metricGroups">—</div><div class="metric-help">Recognized parent groups</div></div>
+        <div class="metric metric-accent"><div class="metric-label">YOUR ACTIVE PROSPECTS <span>✳</span></div><div class="metric-number" id="metricProspects">0</div><div class="metric-help">Locally marked for follow-up</div></div>
+      </div>
+
+      <main class="atlas-layout">
+        <aside class="left-panel" aria-label="Filter and employer results">
+          <section class="filter-intro">
+            <div class="section-head"><div><div class="eyebrow">DISCOVERY LAYER</div><h2>Explore operators</h2></div><button id="resetFilters" class="text-button">Reset</button></div>
+            <div class="search-box"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><input id="search" type="search" placeholder="Company, city or network…" autocomplete="off" aria-label="Search employers"><kbd>/</kbd></div>
+            <div class="sector-switch" role="group" aria-label="Employer sector"><label for="sectorMode">EMPLOYER SECTOR</label><select id="sectorMode"><option value="public">Public transportation</option><option value="heavy">Heavy trucks / Poids lourds</option><option value="all">All sectors</option></select><p id="sectorCoverage">The heavy-truck list is a sourced starter set, not a complete national directory.</p></div><div class="filter-switches"><label class="checkline"><input type="checkbox" id="hqOnly"><span>Group HQ only</span></label><label class="checkline"><input type="checkbox" id="showCandidates" checked><span>Candidate pins</span></label></div>
+            <div class="facet-area" id="facets"></div>
+            <div class="legend-explainer"><div class="eyebrow">HOW TO READ THE MAP</div><div class="legend-line"><span class="pin-key pin-key-hq"></span><div><strong>Group headquarters</strong><small>Largest pin · full color</small></div></div><div class="legend-line"><span class="pin-key pin-key-sub"></span><div><strong>Group operator / subsidiary</strong><small>Same group color · lighter pin</small></div></div><div class="legend-line"><span class="pin-key pin-key-solo"></span><div><strong>Independent employer</strong><small>Dark, high-opacity gray</small></div></div></div>
+          </section>
+
+          <section class="results-panel">
+            <div class="result-head"><div><span class="eyebrow">DIRECTORY</span><h2><span id="resultCount">—</span> results</h2></div><button class="icon-button" id="fitAll" title="Fit map to filtered results" aria-label="Fit map to filtered results"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg></button></div>
+            <div class="results-list" id="resultsList"></div>
+            <div class="results-footer"><button id="showMore" class="show-more" hidden>Show more results ↓</button><button id="exportCsv" class="export-inline">Export filtered CSV <span>↗</span></button></div>
+          </section>
+        </aside>
+
+        <section class="map-column" aria-label="Map of public transport employers in Europe">
+          <div class="map-toolbar"><div class="map-title"><span class="map-dot"></span><strong>EUROPE</strong><span class="map-separator">/</span><span>Employer locations</span></div><div class="map-tools"><span class="scope-tag">CITY-LEVEL PINS</span><label class="boundary-option"><input type="checkbox" id="showRegions" checked> Regions</label><label class="boundary-option"><input type="checkbox" id="showDepartments" checked> Départements</label><button id="logoToggle" class="map-tool-btn logo-toggle" aria-pressed="true" title="Show or hide company brand marks"><span class="logo-toggle-dot">◉</span> Logos on</button><button id="mapHome" class="map-tool-btn" title="Return to Europe view">Europe view <span>↗</span></button><button id="mapFullscreen" class="map-tool-btn fullscreen-btn" aria-pressed="false" title="Switch to a map-only fullscreen layout"><span class="fullscreen-symbol">⛶</span> Fullscreen</button></div></div>
+          <div id="map" role="application" aria-label="Interactive employer map with colored thumbtacks"></div>
+          <div class="map-footer"><div class="map-foot-left"><span id="geoBreadcrumb" class="geo-breadcrumb" title="Based on approximate map centre">France · move map to inspect a region</span><span class="geo-sep"> · </span><span class="map-foot-square"></span> Operators and employer entities, <strong>not passenger stops</strong> · <span id="candidateCoverage">Candidates loading…</span></div><div><span id="mapShown">—</span> mapped · <span class="map-note">Pin = approximate city center, not a depot address</span></div></div>
+        </section>
+
+        <aside class="inspector" aria-label="Selected employer details">
+          <div class="inspector-heading"><div><span class="eyebrow">RECRUITMENT INTELLIGENCE</span><h2>Employer details</h2></div><span class="small-star">✳</span></div>
+          <div id="inspectorBody" class="inspector-body"><div class="empty-inspector"><div class="empty-icon">⌁</div><h3>Select an employer</h3><p>Choose a colored thumbtack or a company in the directory to inspect its operator identity, ownership network and outreach status.</p><div class="empty-rule"></div><span>OPERATING COMPANIES · NOT BUS STOPS</span></div></div>
+          <div class="inspector-footer"><span class="privacy-dot"></span> Prospect notes stay on this PC <span class="footer-count" id="inspectorIndex"></span></div>
+        </aside>
+      </main>
+      <footer class="main-footer"><span><strong>FleetBridge</strong> / European Transport Employer Intelligence</span><span>Sources: <a href="https://www.utpf-mobilites.fr/adherents" target="_blank" rel="noopener">UTPF</a> · <a href="https://www.transbus.org/dossiers/palmares.html" target="_blank" rel="noopener">Transbus</a> · <a href="https://www.arrivagroup.com/about-us/where-we-operate" target="_blank" rel="noopener">Group directories</a> · <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a></span></footer>
+    </div>
+  </div>
+  <script src="assets/leaflet.js"></script>
+  <script src="assets/leaflet.markercluster.js"></script>
+  <script src="candidate-locations.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

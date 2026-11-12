@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Sign in | FleetBridge</title><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/login.css"></head>
+<body>
+<header class="access-header"><div class="header-inner"><div class="access-brand"><img src="/fleetbridge-brand.png" width="30" height="30" alt=""><strong>FleetBridge</strong></div></div></header>
+<main class="access-main">
+<section class="access-panel" aria-labelledby="title">
+  <div class="panel-body">
+    <h1 id="title">Sign in</h1>
+    <form id="loginForm" autocomplete="off"><label for="pin">PIN</label><div class="pin-wrap"><input id="pin" type="password" inputmode="numeric" maxlength="4" minlength="4" autocomplete="off" pattern="[0-9]{4}" required autofocus aria-describedby="feedback" placeholder="••••"><button class="visibility" type="button" id="show" aria-label="Show PIN">Show</button></div>
+    <p id="feedback" role="alert" aria-live="polite"></p><button type="submit" class="submit" id="submit">Continue <span aria-hidden="true">→</span></button></form>
+  </div>
+</section>
+
+</main>
+
+<script src="/login.js" defer></script>
+</body></html>

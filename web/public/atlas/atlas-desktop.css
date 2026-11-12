@@ -1,0 +1,7 @@
+/* Only desktop-integration additions. The Operator Atlas design is unchanged. */
+#goCRM { width:42px;height:42px;appearance:none;border:0;padding:8px;background:transparent;color:inherit;font:inherit;cursor:pointer; }
+#goCRM:focus-visible { outline:2px solid #74b8ca;outline-offset:2px;border-radius:6px; }
+#candidateCoverage { color:#607983;font-size:10px;font-weight:700;white-space:nowrap; }
+.candidate-pin-cluster { border:3px solid #fff;display:grid;place-items:center;box-shadow:0 2px 12px #16493f4a;color:#fff;background:#149e87;border-radius:50%;font-size:12px;font-weight:800; }
+.candidate-cluster-root { background:transparent;border:none; }
+#reviewInCRM { width:100%;text-align:left;cursor:pointer; }

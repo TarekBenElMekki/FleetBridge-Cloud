@@ -1,0 +1,78 @@
+/* FleetBridge brand palette shared with the candidate workspace. */
+:root {
+  --navy: #142b47;
+  --navy2: #203e59;
+  --ink: #172b40;
+  --accent: #148e88;
+  --accent2: #e6f6f3;
+  --bg: #f4f7f9;
+  --line: #e0e8ed;
+}
+.rail { background: var(--navy); }
+.rail-logo { width: 44px; height: 44px; display: grid; place-items: center; letter-spacing: 0; }
+.rail-logo img { display: block; width: 42px; height: 42px; object-fit: contain; border-radius: 11px; }
+.rail-btn.active { background: #244f58; color: #b9f4ed; box-shadow: inset 3px 0 0 #24b9b0; }
+.heading h1 { color: var(--navy); }
+.version-pill b { color: #148e88; }
+.primary-button { background: var(--navy); border-color: var(--navy); }
+.primary-button:hover { background: #203e59; border-color: #203e59; }
+.metric-accent { border-color: #d4efeb; }
+.pulse,.privacy-dot { background: #24b9b0; }
+a:focus-visible,button:focus-visible,input:focus-visible,label:focus-within { outline: 3px solid #65d4c9; outline-offset: 2px; }
+@media(max-width:700px) { .rail-logo { height: 40px; margin-right: 7px; } .rail-logo img { width: 37px; height: 37px; } }
+
+/* Embedded mode is the integrated FleetBridge workspace.
+   The standalone atlas remains available as a fallback. */
+html.embedded,html.embedded body { height: 100%; min-height: 0; overflow: hidden; background: #f4f7f9; }
+html.embedded .app-shell { display: block; height: 100%; min-height: 0; }
+html.embedded .rail,html.embedded .topbar,html.embedded .main-footer { display: none !important; }
+html.embedded .workspace { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+html.embedded .notice { flex: none; padding: 8px 12px; border: 1px solid #d4ede7; border-radius: 8px; margin: 0 0 9px; }
+html.embedded .metrics {
+  flex: none; grid-template-columns: repeat(4,minmax(0,1fr));
+  padding: 0 0 13px; gap: 13px; background: transparent;
+}
+html.embedded .metric {
+  min-height: 90px; padding: 15px 19px; border: 1px solid #e0e8ed;
+  border-radius: 11px; background: #fff; box-shadow: 0 3px 13px rgba(18,52,72,.025);
+}
+html.embedded .metric-accent { background: #eaf7f5; border-color: #d6efeb; }
+html.embedded .metric-label { color: #758a9a; font-size: 10px; letter-spacing: .3px; }
+html.embedded .metric-number { color: #142b47; font: 770 27px/1.1 Inter,'Segoe UI',sans-serif; margin: 7px 0 2px; }
+html.embedded .metric-accent .metric-number { color: #168d83; }
+html.embedded .metric-help { color: #a0afba; font-size: 10px; }
+html.embedded .atlas-layout {
+  flex: 1; display: grid; grid-template-columns: minmax(230px,270px) minmax(0,1fr) minmax(230px,270px);
+  gap: 0; min-width: 0; min-height: 0; height: auto; overflow: hidden;
+  border: 1px solid #e0e8ed; border-radius: 12px; background: #fff;
+}
+html.embedded .left-panel,html.embedded .inspector { height: auto; min-height: 0; overflow: hidden; }
+html.embedded .filter-intro { padding: 16px 15px 10px; }
+html.embedded .results-list { min-height: 0; }
+html.embedded .inspector-heading { padding: 16px 15px; }
+html.embedded .empty-inspector { padding: 55px 19px 20px; }
+html.embedded .map-column #map { flex: 1; height: auto !important; min-height: 0 !important; }
+html.embedded .map-toolbar { flex: none; }
+html.embedded .map-footer { flex: none; }
+html.embedded .action-link.strong { background: #142b47; border-color: #142b47; }
+html.embedded .fullscreen-btn { background: #142b47; border-color: #142b47; }
+html.embedded .fullscreen-btn:hover { background: #203e59; border-color: #203e59; }
+html.embedded body.map-only .atlas-layout {
+  display: flex; height: 100dvh; width: 100%; min-height: 0;
+  overflow: hidden; border: 0; border-radius: 0;
+}
+html.embedded body.map-only .map-column { height: 100dvh; width: 100%; }
+@media(max-width:1150px) {
+  html.embedded .atlas-layout { grid-template-columns: minmax(205px,250px) minmax(0,1fr) minmax(215px,250px); }
+  html.embedded .map-tools { gap: 5px; }
+  html.embedded .scope-tag { display: none; }
+}
+@media(max-width:850px) {
+  html.embedded,html.embedded body { overflow: auto; height: auto; }
+  html.embedded .app-shell,html.embedded .workspace { height: auto; min-height: 100%; }
+  html.embedded .metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  html.embedded .atlas-layout { display: flex; flex-direction: column; overflow: visible; }
+  html.embedded .left-panel,html.embedded .inspector { height: auto; min-height: 0; overflow: visible; }
+  html.embedded .results-list { max-height: 220px; }
+  html.embedded .map-column #map { height: 480px !important; min-height: 480px !important; flex: none; }
+}

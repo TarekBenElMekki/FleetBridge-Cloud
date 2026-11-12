@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FleetBridge Discovery</title><link rel="stylesheet" href="style.css"></head>
+<body class="popup"><div class="shell">
+  <div class="eyebrow">FLEETBRIDGE / DISCOVERY</div><h1>Google collection</h1>
+  <div id="stats" class="capture-result">Loading results…</div>
+  <button id="start" class="primary">1 · Collect candidate links</button>
+  <div class="two"><button id="pause" class="secondary">Pause batch</button><button id="resume" class="secondary">Resume batch</button></div>
+  <div class="two"><button id="review" class="secondary">2 · Review profiles →</button><button id="stop" class="danger">Stop run</button></div>
+  <div id="message" class="notice" role="status">Ready.</div>
+  <details class="popup-advanced"><summary>Collection settings</summary>
+    <label for="pages">Collection batch size</label>
+    <select id="pages"><option value="links250" selected>Target 250 unique candidate links (up to 40 pages)</option><option value="pages5">5 Google pages</option><option value="pages10">10 Google pages</option><option value="pages20">20 Google pages</option></select>
+    <button id="capturePage" class="quiet-button">Capture only this page</button>
+  </details>
+  <button id="dashboard" class="quiet-button">View candidate spreadsheet &amp; map ↗</button>
+  <small>One click starts a bounded Google batch. About 250 distinct profile links is a target, not a guarantee. LinkedIn pages remain manual.</small>
+</div><script src="popup.js"></script></body></html>

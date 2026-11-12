@@ -1,0 +1,22 @@
+name: Safe source checks
+on:
+  push:
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check for forbidden private files
+        shell: bash
+        run: |
+          if find . -type f \( -name '*.sqlite' -o -name '*.fbdb' -o -name '.env' -o -name 'Secure Preferences' -o -name '*.pem' \) | grep .; then exit 1; fi
+      - name: Web preview tests
+        run: cd web && npm test
+      - name: Desktop source tests
+        run: cd apps/desktop && npm test
+      - name: Candidate Scout source tests
+        run: cd extensions/candidate-scout && node --test *.test.mjs

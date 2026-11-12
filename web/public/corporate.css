@@ -1,0 +1,186 @@
+/* FleetBridge Corporate Light · application-wide design layer */
+:root {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-muted: #f8faff;
+  --canvas: #f4f7fc;
+  --ink: #1e334f;
+  --ink-soft: #526985;
+  --ink-muted: #71849c;
+  --line: #e5ebf4;
+  --line-strong: #d7e1ef;
+  --blue: #3c70cb;
+  --blue-deep: #265aaf;
+  --blue-wash: #eaf2ff;
+  font-family: 'Segoe UI Variable', 'Aptos', 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--canvas);
+}
+body { background: var(--canvas); color: var(--ink); }
+::selection { background: #d7e8ff; color: #1d4f99; }
+.shell { background: linear-gradient(134deg,#f7f9fd 0%,#f2f6fc 58%,#edf4fc 100%); }
+
+/* Light, understated side rail */
+.sidebar {
+  width: 244px;
+  padding: 25px 14px 22px;
+  background: linear-gradient(177deg,#ffffff 0%,#fafcff 48%,#f1f6fd 100%);
+  color: var(--ink);
+  border-right: 1px solid var(--line);
+  box-shadow: 5px 0 22px rgba(55,91,148,.025);
+}
+.brand { padding: 1px 12px 43px; color: #263d5a; font-size: 14px; letter-spacing: 1.28px; gap: 12px; }
+.brandmark {
+  width: 37px; height: 37px; border-radius: 11px;
+  background: linear-gradient(145deg,#7eb2ed,#477bc8 58%,#3667b9);
+  color: white; font-weight: 800; font-size: 20px;
+  border: 1px solid #8db8f2;
+  box-shadow: 0 5px 13px rgba(78,128,198,.16);
+}
+.brand small { color:#97a8be; font-size: 9px; margin-top:6px; font-weight:650; }
+.nav-label { color:#a0aec1; margin:16px 0 8px; font-size:10px; letter-spacing:1.3px; }
+.nav { color:#667b96; font-weight:600; font-size:12.5px; padding:13px 15px; border:1px solid transparent; transition:background .18s,border .18s,color .18s; }
+.nav:hover { color:#315c99; background:#f1f6ff; }
+.nav.active {
+  color:#2c5fa8;
+  background:linear-gradient(104deg,#e8f1ff 0%,#f3f8ff 100%);
+  border:1px solid #dceaff;
+  box-shadow:inset 3px 0 #69a0ea;
+  font-weight:700;
+}
+.sidebar-bottom { color:#647b94; border-top:1px solid #e2eaf4; line-height:1.5; }
+.sidebar-bottom .muted { color:#98a7ba; }
+.green-dot { background:#5bbf9f; box-shadow:0 0 0 3px #e9f8f1; width:7px; height:7px; }
+
+/* Global command bar */
+.topbar {
+  height:68px;
+  background:linear-gradient(95deg,rgba(255,255,255,.97),rgba(249,252,255,.96));
+  border-bottom:1px solid var(--line);
+  box-shadow:0 2px 10px #31598c04;
+  padding:0 33px;
+}
+.breadcrumb { display:flex; align-items:center; gap:11px; color:#3b526f; font-size:12.5px; }
+.breadcrumb strong { font-weight:700; }
+.workspace-label { letter-spacing:1.3px; font-size:10px; font-weight:800; color:#7993b7; }
+.crumb-sep { color:#bdc9d7; font-size:16px; }
+.topbar-status { display:flex;align-items:center;gap:7px;color:#7f91a8;font-weight:600;font-size:11px;margin-right:5px;white-space:nowrap; }
+.device-tag { background:#f0f9f7; border:1px solid #e0f0e9; color:#4b917a; font-size:11px; font-weight:650; }
+.soft,.primary { font-size:12px; font-weight:700; letter-spacing:.1px; border-radius:8px; padding:11px 16px; transition:transform .15s,box-shadow .15s,background .15s; }
+.soft { color:#4c6586; border:1px solid #dbe4f1; background:linear-gradient(180deg,#fff,#f9fbff);box-shadow:0 1px 2px #4e78a80b; }
+.soft:hover { background:#f0f6ff; border-color:#c3d5ec; }
+.primary { background:linear-gradient(118deg,#558cdd,#3972c6); border:1px solid #4a80ce; box-shadow:0 4px 12px rgba(58,106,182,.12); }
+.primary:hover { background:linear-gradient(118deg,#477dd3,#2c65b9); box-shadow:0 5px 13px rgba(58,106,182,.19); }
+.soft:active,.primary:active { transform:translateY(1px); }
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible { outline:3px solid #b2d2ff; outline-offset:2px; }
+
+/* Spacious, airy Salesforce-style workspace */
+.view { padding:29px 32px 36px; }
+.page-head {
+  min-height:146px;
+  margin-bottom:20px;
+  padding:26px 29px;
+  background:linear-gradient(112deg,#eef5ff 0%,#f8fbff 39%,#ffffff 71%,#f4f9ff 100%);
+  border:1px solid #e4edf8;
+  border-radius:15px;
+  box-shadow:0 5px 26px rgba(46,95,160,.035);
+}
+.page-head h1 { color:#263c5b; font-weight:730; font-size:27px; letter-spacing:-.6px; margin:9px 0 8px; }
+.page-head p { color:#7c91aa; font-size:12.5px; line-height:1.5; }
+.overline { color:#6c97d1; font-size:10px; font-weight:800; letter-spacing:1.65px; }
+.head-actions { align-self:center; }
+.stats { gap:16px; margin-bottom:21px; }
+.stat {
+  min-height:120px;
+  padding:23px 23px 20px;
+  border:1px solid #e2eaf6;
+  border-radius:13px;
+  background:linear-gradient(156deg,#ffffff 19%,#f8fbff 81%,#f1f7ff 100%);
+  box-shadow:0 4px 17px rgba(35,76,143,.037);
+  position:relative; overflow:hidden;
+}
+.stat::before { content:''; position:absolute;top:0;left:19px;width:43px;height:3px;border-radius:0 0 5px 5px;background:#90b9ed; }
+.stat:nth-child(2)::before { background:#99c8c4; }
+.stat:nth-child(3)::before { background:#a5b8e7; }
+.stat:nth-child(4)::before { background:#b5bddb; }
+.stat span { color:#8699b0; font-size:11.5px; font-weight:650; }
+.stat strong { color:#314d72; font-size:33px; font-weight:710; margin-top:12px; }
+.table-card,.card {
+  border:1px solid #e2eaf4;
+  border-radius:13px;
+  background:linear-gradient(145deg,#fff,#fcfdff);
+  box-shadow:0 4px 18px rgba(40,77,128,.045);
+}
+.table-top { padding:23px 25px; }
+.table-top h2,.card h2 { color:#2d4565; font-size:14px; font-weight:750; margin-bottom:7px; }
+.table-top p { color:#94a2b4; font-size:11.5px; }
+.table-top input,.field select,.field textarea {
+  color:#405b7b;
+  background:#fbfcff;
+  border:1px solid #dce6f2;
+  border-radius:9px;
+  box-shadow:inset 0 1px 3px rgba(68,106,152,.025);
+}
+.table-top input { padding:12px 15px; }
+input::placeholder { color:#a1b1c5; }
+.table-scroll { max-height:calc(100vh - 410px); }
+th { background:linear-gradient(180deg,#f5f8fd,#f0f5fb); color:#8597ae; font-size:9.5px; border-bottom:1px solid #e3eaf4; }
+td { border-color:#ebf0f6; color:#526984; padding-top:16px; padding-bottom:16px; }
+td strong { color:#304864; font-weight:690; }
+td .muted { color:#98a7b8; }
+tbody tr { transition:background .15s; }
+tbody tr:hover { background:#f6faff; }
+td button { color:#447bc7; }
+.stage { background:linear-gradient(110deg,#edf4ff,#e8f2ff); color:#5279ad; font-size:11px; font-weight:660; }
+.inspector { border-left:1px solid #e4ebf4; background:linear-gradient(170deg,#ffffff,#f8fbff); box-shadow:-4px 0 14px #496b9707; }
+.inspector h2 { color:#2c4665; }
+.inspector .muted { color:#8a9cb2; line-height:1.5; }
+.close { background:#eff4fb; color:#7791ad; }
+.field { color:#69809d; }
+#open-link { color:#437bc7; }
+.settings-grid { gap:18px; }
+.card { padding:28px; }
+.card p,.card li { color:#7186a0; }
+.pair-code { color:#4b81cc; letter-spacing:8px; }
+.client-list div { border-color:#ecf0f6; }
+
+/* Immersive browser-map layout: map itself never needs document scrolling */
+.map-view.active { background:#f6f9fd; }
+.map-toolbar {
+  min-height:76px;
+  padding:18px 28px;
+  background:linear-gradient(107deg,#f6faff,#fff 65%,#f5faff);
+  border-bottom:1px solid #e1eaf5;
+}
+.map-toolbar strong { color:#304b6f; font-size:15px; letter-spacing:.1px; }
+.map-toolbar span { display:block; margin-top:4px; color:#91a4b9; }
+.map-toggles { gap:17px; color:#6e849f; }
+.map-toggles label { display:flex;gap:5px;align-items:center;padding:8px 10px;background:#fff;border:1px solid #e5ebf4;border-radius:7px; }
+.map-toggles input { accent-color:#568bd3; }
+.map-host { border:5px solid #f3f7fb; border-top:none; border-bottom:none; }
+.map-control { border:1px solid #dce6f2; color:#5d7291; box-shadow:0 2px 8px #38577f10; }
+.map-footnote { background:#fbfdff; border-top:1px solid #e4ebf5; color:#8e9eb3; padding:10px 16px; }
+.map-popup { border:1px solid #e1e8f3; box-shadow:0 7px 35px #45688c25; }
+.map-detail { background:#f5f9ff; color:#577498; }
+.map-thumbtack.candidate-pin { background:#6d9cde; }
+.map-thumbtack.ratp-pin { background:#72afaa; }
+.map-thumbtack.cluster-pin { box-shadow:0 3px 12px #405c8445; }
+#toast { background:#fdfefe; border:1px solid #dbe6f2; color:#385574; box-shadow:0 7px 22px #30577a23; }
+
+@media (max-width:1120px) {
+  .sidebar { width:208px; }
+  .topbar-status { display:none; }
+  .page-head { padding:23px; }
+}
+@media (max-width:800px) {
+  .sidebar { width:67px; padding:15px 7px; }
+  .brand { padding:15px 8px 33px; }
+  .page-head { flex-wrap:wrap; }
+  .view { padding:17px; }
+  .stat { min-height:104px; }
+  .topbar { padding:0 18px; }
+  .map-toolbar { padding:12px 15px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .nav,.soft,.primary,tbody tr { transition:none; }
+}

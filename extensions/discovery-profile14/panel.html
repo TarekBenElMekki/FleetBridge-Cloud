@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FleetBridge Capture</title><link rel="stylesheet" href="style.css"></head>
+<body class="panel capture-panel"><main class="shell">
+  <div class="eyebrow">FLEETBRIDGE / DISCOVERY</div>
+  <div class="capture-heading"><h1>Capture</h1><button id="dashboard" class="quiet-button">Workspace ↗</button></div>
+  <section class="card capture-target">
+    <div id="progress" class="meta">Loading…</div>
+    <h2 id="candidateTitle" class="title-break">—</h2>
+    <p id="candidateSnippet" class="muted-text"></p>
+    <div id="result" class="capture-result">No captured details</div>
+    <button id="openProfile" class="secondary step-button">1 · Open profile for review</button>
+  </section>
+  <section class="card capture-actions">
+    <button id="capture" class="primary">2 · Capture visible profile</button>
+    <button id="captureFull" class="secondary">+ Capture extra experience (optional)</button>
+    <button id="saveNext" class="primary">3 · Save &amp; open next →</button>
+    <div id="captureStatus" class="notice" role="status">Ready to capture.</div>
+  </section>
+  <button id="review" class="quiet-button workspace-button">View results / review data ↗</button>
+  <div class="row small-actions"><button id="previous" class="quiet-button">← Back</button><button id="next" class="quiet-button">Skip →</button><button id="reloadQueue" class="quiet-button">Refresh</button><button id="rebuild" class="quiet-button">Pending only</button></div>
+  <div id="panelError" role="alert" class="notice hidden"></div>
+  <small>Only explicit clicks capture LinkedIn details. The next profile opens after Save &amp; Next; detailed decisions stay in Workspace.</small>
+</main>
+<script src="experience_metrics.js"></script><script src="career_intelligence.js"></script><script src="core.js"></script><script src="db.js"></script><script src="profile_capture.js"></script><script src="panel.js"></script>
+</body></html>

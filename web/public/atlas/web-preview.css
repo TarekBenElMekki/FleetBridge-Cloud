@@ -1,0 +1,3 @@
+/* Read-only public preview: remove editing/export actions, keep map exploration. */
+#downloadTemplate, .import-label, #fileImport, #exportCsv, #saveProspect, #saveProspectStatus,
+#saveNotes, .export-inline { display:none !important; }

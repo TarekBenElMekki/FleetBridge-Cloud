@@ -1,0 +1,20 @@
+FLEETBRIDGE — PRE-PUSH SOURCE SAFETY REVIEW
+Prepared: 2026-11-12
+
+Source composition:
+- Original packaged V2.4 Desktop server and UI, with V2.5 corporate light UI applied.
+- Three original extension code directories, with Corporate Report-only popup update applied to Candidate Scout.
+- Separate web/public static preview with five explicitly synthetic candidates, three synthetic contract assignments and read-only APIs.
+
+Safety results:
+- 207 small source/text files examined for common credential literal patterns.
+- 0 hardcoded key/token matches under the heuristic patterns inspected.
+- 0 private/database filename matches in the assembled source tree.
+- Web deployment includes no local server.js, store.js, auth-gate.js, sqlite, Chrome profiles or pairing tokens.
+- The source DOES contain the historical local preview PIN 1234 in the Desktop code. Do not deploy Desktop/server.js to a public URL.
+- The static Atlas contains a public-company directory and place coordinates, not a complete verified vacancy database.
+
+IMPORTANT: This is a heuristic file scan, NOT a full security audit.
+Manually inspect all source and third-party data licenses before publishing, even to a private repository.
+The GitHub publishing script requires explicit confirmation and checks repository privacy after creation.
+The Vercel demo is synthetic-only and read-only, not production software.

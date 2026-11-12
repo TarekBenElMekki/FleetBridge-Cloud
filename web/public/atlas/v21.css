@@ -1,0 +1,19 @@
+/* V2.1: sector selection, French administrative hierarchy and map reading */
+.sector-switch{padding:11px 13px;background:var(--a-raised);border:1px solid var(--a-line);border-radius:8px;margin:10px 0}
+.sector-switch label{display:block;color:var(--a-muted);font-size:10px;font-weight:750;letter-spacing:.9px;margin-bottom:7px}
+.sector-switch select{width:100%;border:1px solid var(--a-line);border-radius:6px;padding:8px;background:var(--a-panel);color:var(--a-text);font:inherit;font-size:12px}
+.sector-switch p{font-size:10px;line-height:1.45;color:var(--a-muted);margin:7px 0 0}
+.boundary-option{display:inline-flex;align-items:center;gap:5px;margin:0 3px;color:var(--a-muted);font-size:11px;white-space:nowrap}
+.boundary-option input{accent-color:var(--a-accent)}
+.geo-breadcrumb{color:var(--a-accent);font-weight:650;max-width:310px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:inline-block;vertical-align:middle}
+.region-label,.department-label{border:none!important;background:transparent!important;text-align:center;pointer-events:none}
+.region-label span{font-family:Inter,system-ui,sans-serif;font-size:11px;text-shadow:0 1px 3px #fffd;letter-spacing:.03em;font-weight:750;color:#247f85}
+.department-label span{font-family:Inter,system-ui,sans-serif;font-size:9px;background:#f7fffee8;padding:2px 5px;border-radius:4px;font-weight:650;color:#28656d;white-space:nowrap}
+
+
+@media(max-width:1150px){.boundary-option{font-size:10px}.geo-sep{display:none}.geo-breadcrumb{max-width:140px}}
+/* Prevent map controls from overflowing the center column at desktop widths. */
+html.embedded .map-toolbar{height:auto;min-height:46px;gap:4px;flex-wrap:wrap;padding:6px 10px}
+html.embedded .map-tools{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:5px}
+html.embedded .map-title{min-width:90px}
+@media(max-width:1100px){html.embedded .scope-tag{display:none}html.embedded .map-title .map-separator{display:none}}

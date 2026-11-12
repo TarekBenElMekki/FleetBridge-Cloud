@@ -1,0 +1,51 @@
+/* FleetBridge V2.1 — one enterprise shell, three workspaces. */
+.nav svg{flex-shrink:0}.top-actions #logout{color:var(--v2-muted);white-space:nowrap}
+#companies-view.view.active{display:flex;flex:1;min-height:0;flex-direction:column;padding:13px 17px;overflow:hidden}
+.directory-panel{background:var(--v2-surface);border:1px solid var(--v2-line);border-radius:9px;display:flex;flex:1;min-height:0;flex-direction:column;overflow:hidden}
+.directory-panel .table-top{padding:17px 19px;flex-shrink:0}
+.directory-panel .table-scroll{overflow:auto;flex:1;min-height:0}
+.directory-panel table{width:100%;border-collapse:collapse}
+.directory-panel th{background:var(--v2-raised);color:var(--v2-muted);padding:12px 14px;text-align:left;white-space:nowrap;font-weight:650;position:sticky;top:0;z-index:2;border-bottom:1px solid var(--v2-line)}
+.directory-panel td{padding:11px 14px;max-width:300px;border-bottom:1px solid var(--v2-line);color:var(--v2-muted);font-size:12px}
+.directory-panel .company-strong{color:var(--v2-heading);font-weight:650}
+.directory-panel .table-tools{display:flex;gap:8px;align-items:center}
+.directory-panel .table-tools select{font:inherit;color:var(--v2-text);background:var(--v2-input);border:1px solid var(--v2-line);border-radius:6px;padding:9px 8px;max-width:190px}
+.company-sector{color:var(--v2-accent)!important;font-weight:650}
+.companies-mode .company-inspector.open{display:flex}
+.company-inspector{display:none!important;background:var(--v2-surface);color:var(--v2-text);border-left:1px solid var(--v2-line);flex-direction:column;width:355px;min-height:0;overflow:auto}
+body.companies-mode .company-inspector.open{display:flex!important}
+body.companies-mode #inspector{display:none!important}
+body.atlas-mode .company-inspector,body[data-view=crm] .company-inspector{display:none!important}
+.company-inspector-body{padding:18px;overflow:auto}
+.inspector-company-title{font-size:19px;letter-spacing:-.4px;color:var(--v2-heading);margin:0 0 19px}
+.company-fact{display:flex;flex-direction:column;gap:6px;padding:11px 0;border-bottom:1px solid var(--v2-line)}
+.company-fact span{font-size:10px;text-transform:uppercase;letter-spacing:.75px;color:var(--v2-subtle)}
+.company-fact strong{font-size:12px;font-weight:550;color:var(--v2-text);line-height:1.5}
+.company-action{display:block;text-decoration:none;width:100%;text-align:center;margin-top:14px;padding:11px 9px;border-radius:7px;border:1px solid var(--v2-line);color:var(--v2-accent);font-weight:650;cursor:pointer}
+.candidate-intelligence{display:flex;align-items:center;gap:18px;flex-shrink:0;padding:8px 18px;margin-bottom:12px;border:1px solid var(--v2-line);background:var(--v2-surface);border-radius:8px;min-height:146px}
+.radar-frame{width:172px;height:137px;flex:none}.radar-frame svg{width:100%;height:100%;overflow:visible}
+.radar-grid polygon,.radar-grid path{fill:none;stroke:var(--v2-line);stroke-width:1}.radar-target{fill:rgba(20,170,153,.04);stroke:var(--v2-accent);stroke-width:1.5;stroke-dasharray:4,3}.radar-actual{fill:rgba(20,170,153,.20);stroke:#0fa995;stroke-width:2}
+.radar-frame text{fill:var(--v2-muted);font-size:8.5px;font-family:Inter,system-ui,sans-serif}
+.radar-information{min-width:0}.radar-information h2{font-size:16px;letter-spacing:-.3px;margin:6px 0;color:var(--v2-heading)}
+.radar-information p{color:var(--v2-muted);font-size:12px;margin:5px 0}.radar-facts{font-size:12px;color:var(--v2-accent);font-weight:650;margin-top:9px;line-height:1.5}
+.radar-information small{display:block;color:var(--v2-subtle);font-size:10px;margin-top:5px}
+.candidate-summary-inspector{padding:10px;background:var(--v2-raised);border-radius:6px;color:var(--v2-muted);font-size:11px;line-height:1.6}
+.history-map{height:180px;border:1px solid var(--v2-line);border-radius:7px;background:var(--v2-raised);z-index:0;overflow:hidden}
+.history-map .leaflet-container{background:var(--v2-raised)}
+.history-evidence{font-size:11px;color:var(--v2-muted);line-height:1.5}
+.nearest-company{padding:10px 11px;background:var(--v2-accent-bg);border:1px solid var(--v2-line);border-radius:7px;font-size:11px;line-height:1.6;color:var(--v2-text);margin:12px 0 17px}
+.nearest-company strong{display:block;color:var(--v2-accent);font-size:11px}
+body[data-view=crm] .company-inspector{display:none}
+@media(max-width:1200px){.directory-panel td{font-size:11px}.candidate-intelligence{gap:10px}.radar-frame{width:140px}}
+@media(max-width:850px){body.companies-mode .company-inspector.open{position:fixed;inset:54px 0 0 auto;width:min(370px,92vw);z-index:60;box-shadow:-12px 0 34px #0005}.directory-panel .table-tools{flex-wrap:wrap}}
+@media(max-width:600px){.candidate-intelligence{min-height:125px;padding:10px}.radar-frame{width:115px}.radar-information h2{font-size:13px}.radar-information p,.radar-facts{font-size:10px}}
+/* Table columns fit the workstation without silently hiding the inspector action. */
+.directory-panel table{table-layout:fixed;min-width:0!important;width:100%!important}
+.directory-panel th,.directory-panel td{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.directory-panel th:nth-child(1),.directory-panel td:nth-child(1){width:26%}
+.directory-panel th:nth-child(2),.directory-panel td:nth-child(2){width:16%}
+.directory-panel th:nth-child(3),.directory-panel td:nth-child(3){width:14%}
+.directory-panel th:nth-child(4),.directory-panel td:nth-child(4){width:19%}
+.directory-panel th:nth-child(5),.directory-panel td:nth-child(5){width:16%}
+.directory-panel th:nth-child(6),.directory-panel td:nth-child(6){width:9%}
+body.companies-mode .crm-actions,body.companies-mode .atlas-actions{display:none!important}

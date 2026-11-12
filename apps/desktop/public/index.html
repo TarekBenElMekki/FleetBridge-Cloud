@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="FleetBridge — local-first talent and transport recruitment operations.">
+  <title>FleetBridge</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script src="/theme-init.js"></script>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/corporate.css">
+  <link rel="stylesheet" href="/classic-crm.css">
+  <link rel="stylesheet" href="/brand-2026.css">
+  <link rel="stylesheet" href="/v2.css">
+  <link rel="stylesheet" href="/atlas/assets/leaflet.css">
+  <link rel="stylesheet" href="/v21.css">
+  <link rel="stylesheet" href="/v22.css">
+  <link rel="stylesheet" href="/v23.css">
+  <link rel="stylesheet" href="/v24.css">
+  <link rel="stylesheet" href="/v25.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <img src="/fleetbridge-brand.png" class="brandmark" alt="" width="44" height="44">
+        <span class="brand-copy"><strong>FleetBridge</strong></span>
+      </div>
+      <button type="button" class="nav active" data-view="crm" aria-label="Open candidate directory">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M5.5 17c.4-2 2-3 3.5-3s3.1 1 3.5 3M15 9h4M15 13h4"/></svg><span>Candidates</span><span class="nav-count" id="nav-candidate-count">—</span>
+      </button>
+      <button type="button" class="nav" data-view="companies" aria-label="Open company directory"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 13h18"/></svg><span>Companies</span><span class="nav-count" id="nav-company-count">—</span></button>
+      <button type="button" class="nav" data-view="contracts" aria-label="Open contract tracking">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h8l4 4v14H5V3h2zM14 3v5h5M8 12h8M8 16h8"/></svg><span>Contracts</span><span class="nav-count" id="nav-contract-count">—</span>
+      </button>
+      <button type="button" class="nav" data-view="map" aria-label="Open employer atlas">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-2 6 2 6-2v14l-6 2-6-2-6 2zM9 4v14M15 6v14"/></svg><span>Map</span>
+      </button>
+      <button type="button" class="sidebar-collapse" id="sidebar-toggle" aria-label="Collapse sidebar" aria-expanded="true" title="Collapse or expand navigation">‹ <span>Collapse</span></button>
+      <div class="sidebar-bottom">
+        <div class="connection-title"><span class="green-dot" aria-hidden="true"></span><strong id="connection-label">Connecting</strong></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumb"><strong id="page-name">Candidates</strong></div>
+        <div class="top-actions">
+          <span class="topbar-status" hidden><span id="top-connection">Connecting to local data…</span></span>
+          <div class="context-actions crm-actions">
+            <button type="button" class="soft" id="import">Import</button>
+            <button type="button" class="soft" id="export">Export</button>
+          </div>
+          <div class="context-actions contract-actions"><button type="button" class="primary" id="new-contract">+ New assignment</button></div>
+          <div class="context-actions atlas-actions">
+            <button type="button" class="soft" id="atlas-template">CSV template</button>
+            <button type="button" class="soft" id="atlas-import">Import locations</button>
+          </div>
+          <button type="button" class="soft refresh-button" id="refresh" title="Refresh records" aria-label="Refresh records"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 7v5h-5"/><path d="M4 17v-5h5"/><path d="M6.2 9A7 7 0 0 1 18 7l2 5M4 12l2 5a7 7 0 0 0 11.8-2"/></svg></button>
+          <button type="button" class="soft lock-action" id="logout" title="End this local session">Sign out</button>
+          
+        </div>
+      </header>
+
+      <section id="crm" class="view active" aria-labelledby="crm-title">
+        <h1 id="crm-title" class="visually-hidden">Candidate directory</h1>
+
+        <div class="stats crm-summary" aria-label="Recruitment summary">
+          <div class="stat"><span>Total candidates</span><strong id="total">—</strong></div>
+          <div class="stat"><span>Reviewed profiles</span><strong id="reviewed">—</strong></div>
+          <div class="stat"><span>Active pipeline</span><strong id="active">—</strong></div>
+          <div class="stat"><span>Establishments</span><strong id="companies">—</strong></div>
+        </div>
+
+        <div class="candidate-intelligence" aria-label="Candidate qualification reference">
+          <div class="radar-frame"><svg id="candidate-radar" viewBox="0 0 174 154" role="img" aria-label="Reference radar for age, experience, and location"><g class="radar-grid"><polygon points="87,16 23,126 151,126"/><polygon points="87,43 39,112 135,112"/><polygon points="87,70 55,98 119,98"/><path d="M87 16V126M23 126L151 126M23 126L87 16M151 126L87 16"/></g><polygon class="radar-target" points="87,16 23,126 151,126"/><polygon class="radar-actual" id="radar-actual" points=""/><text x="87" y="11" text-anchor="middle">Age ≤55</text><text x="19" y="144" text-anchor="start">Experience 5+</text><text x="152" y="144" text-anchor="end">Location</text></svg></div>
+          <div class="radar-information"><h2 id="radar-name">Candidate criteria</h2><div id="radar-facts" class="radar-facts">Select a candidate to compare available evidence.</div><small>Age and experience are reference values, not automatic exclusions.</small></div>
+        </div>
+        <div class="table-card">
+          <div class="table-top">
+            <div class="table-heading">
+              
+              <h2><span id="visible-count" class="count-pill">—</span> records</h2>
+              <p class="muted" id="table-caption">Loading candidates…</p>
+            </div>
+            <div class="table-tools"><button type="button" class="clear-filters" id="clear-filters" hidden>Reset filters</button></div>
+          </div>
+          <div class="table-scroll">
+            <table aria-label="Candidate records">
+              <thead><tr class="filter-header">
+                <th><div class="column-head"><span>Candidate / role</span><input id="search" class="head-filter" type="search" placeholder="Find candidate or role" autocomplete="off" aria-label="Search candidates"></div></th>
+                <th><div class="column-head"><span>Location</span><select id="location-filter" class="head-filter" aria-label="Filter candidate location"><option value="all">All locations</option><option value="known">Known</option><option value="missing">Unknown</option></select></div></th>
+                <th><div class="column-head"><span>Stage</span><select id="stage-filter" class="head-filter" aria-label="Filter recruitment stage"><option value="all">All stages</option><option value="new">New</option><option value="reviewing">Reviewing</option><option value="shortlisted">Shortlisted</option><option value="contacted">Contacted</option><option value="interview">Interview</option><option value="rejected">Rejected</option></select></div></th>
+                <th><div class="column-head"><span>Source</span><select id="source-filter" class="head-filter" aria-label="Filter candidate source"><option value="all">All sources</option><option value="Reviewed profile">Reviewed profile</option><option value="Chrome capture">Chrome capture</option><option value="Google discovery">Google discovery</option></select></div></th>
+                <th class="actions-col"><span>Open</span></th>
+              </tr></thead>
+              <tbody id="rows"></tbody>
+            </table>
+            <div id="empty-state" class="empty-state" hidden>
+              <div class="empty-symbol">⌕</div>
+              <h3>No matching candidates</h3>
+              <p>Try another search or clear the active filters.</p>
+              <button type="button" class="soft" id="empty-clear">Clear filters</button>
+            </div>
+          </div>
+          <div class="table-footer"><span id="table-footer-count">Loading records</span></div>
+        </div>
+      </section>
+
+      <section id="map" class="view map-view" aria-label="Employer atlas">
+        <h1 class="visually-hidden">Operator Atlas</h1>
+        <div class="atlas-container">
+          <iframe id="atlas-frame" src="/atlas/index.html?embedded=1" title="FleetBridge European transport employer atlas" loading="eager" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section id="companies-view" class="view companies-view" aria-label="Company directory">
+        <div class="directory-panel"><div class="table-top"><div class="table-heading"><h2><span id="company-count" class="count-pill">—</span> records</h2><p class="muted" id="company-coverage">Company directory</p></div>
+        <div class="table-tools"><button type="button" id="clear-company-filters" class="clear-filters" hidden>Reset filters</button></div></div>
+        <div class="table-scroll"><table aria-label="Employer records"><thead><tr class="filter-header">
+          <th><div class="column-head"><span>Company</span><input id="company-search" class="head-filter" type="search" placeholder="Company name / site" autocomplete="off" aria-label="Search company"></div></th>
+          <th><div class="column-head"><span>Sector</span><select id="company-sector" class="head-filter" aria-label="Filter employer sector"><option value="all">All sectors</option><option value="public">Public transport</option><option value="heavy">Heavy trucks</option></select></div></th>
+          <th><div class="column-head"><span>Location</span><select id="company-country" class="head-filter" aria-label="Filter company country"><option value="all">All countries</option></select></div></th>
+          <th><div class="column-head"><span>Group</span><input id="company-group" class="head-filter" type="search" placeholder="Filter group" autocomplete="off" aria-label="Filter company group"></div></th>
+          <th><div class="column-head"><span>Source</span><select id="company-origin" class="head-filter" aria-label="Filter company provenance"><option value="all">All sources</option><option value="atlas">Atlas directory</option><option value="official">Official website</option><option value="manual">Local records</option></select></div></th>
+          <th class="actions-col"><span>Open</span></th>
+        </tr></thead><tbody id="company-rows"></tbody></table><div id="company-empty" class="empty-state" hidden>No matching company records. Try another filter.</div></div><div class="table-footer"><span id="company-footer">Loading…</span></div></div>
+      </section>
+
+      <section id="contracts" class="view contracts-view" aria-label="Contracts and probation tracking">
+        <div class="contracts-main">
+          <div class="contracts-intro">
+            <div><h1>Contracts <span id="contracts-total" class="count-pill">0</span></h1></div>
+          </div>
+          <div class="organization" aria-label="RS Univers group structure">
+            <div class="org-parent"><strong>RS Univers</strong><span id="org-group-count" class="visually-hidden">0 assignments</span></div>
+            <div class="org-branches" id="org-branches">
+              <button type="button" class="org-entity" data-entity="RS Univers Industrie"><span class="org-company">RS Univers Industrie</span><span class="org-counters" data-count="RS Univers Industrie">0 active · 0 total</span></button>
+              <button type="button" class="org-entity" data-entity="RS Univers Consulting"><span class="org-company">RS Univers Consulting</span><span class="org-counters" data-count="RS Univers Consulting">0 active · 0 total</span></button>
+              <button type="button" class="org-entity" data-entity="Mantingo"><span class="org-company">Mantingo</span><span class="org-counters" data-count="Mantingo">0 active · 0 total</span></button>
+            </div>
+          </div>
+          <div class="contract-signals" aria-label="Probation period alerts">
+            <span><strong id="contract-active-count">0</strong> active assignments</span>
+            <span><strong id="contract-due-count">0</strong> first periods ending in 14 days</span>
+            <span><strong id="contract-ended-count">0</strong> first periods ended</span>
+            <span><strong id="contract-decision-count">0</strong> decisions pending</span>
+          </div>
+          <div class="contracts-directory">
+            <div class="contracts-table-heading"><h2>Assignments <span id="contracts-visible" class="count-pill">0</span></h2><button type="button" id="contracts-reset" class="clear-filters" hidden>Clear filters</button></div>
+            <div class="table-scroll contracts-table-scroll"><table class="contracts-table" aria-label="Contract and probation records">
+              <colgroup><col style="width:19%"><col style="width:18%"><col style="width:18%"><col style="width:15%"><col style="width:20%"><col style="width:10%"></colgroup>
+              <thead><tr class="filter-header">
+                <th><div class="column-head"><span>Candidate / role</span><input id="contracts-search" class="head-filter" type="search" placeholder="Name or client" aria-label="Search contracts"></div></th>
+                <th><div class="column-head"><span>RS Univers entity</span><select id="contracts-entity" class="head-filter" aria-label="Filter by entity"><option value="all">All companies</option><option>RS Univers Industrie</option><option>RS Univers Consulting</option><option>Mantingo</option></select></div></th>
+                <th><div class="column-head"><span>Client / site</span></div></th>
+                <th><div class="column-head"><span>First trial ends</span><select id="contracts-probation" class="head-filter" aria-label="Filter by probation status"><option value="all">All periods</option><option value="soon">Due within 14 days</option><option value="ended">First period ended</option><option value="active">First period active</option><option value="upcoming">Not started</option></select></div></th>
+                <th><div class="column-head"><span>Client hiring decision</span><select id="contracts-decision" class="head-filter" aria-label="Filter hiring decision"><option value="all">All decisions</option><option value="pending">Awaiting decision</option><option value="yes">Will hire</option><option value="no">Will not hire</option></select></div></th>
+                <th class="actions-col">Open</th>
+              </tr></thead>
+              <tbody id="contract-rows"></tbody>
+            </table>
+            <div class="contracts-empty" id="contracts-empty" hidden>No assignments match the current filters. Use “New assignment” to add a record.</div>
+            </div>
+            <div class="table-footer"><span id="contracts-footer">0 assignments</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="inspector" id="inspector" aria-label="Candidate inspector">
+      <div class="inspector-top"><span class="overline">CANDIDATE PROFILE</span><button type="button" class="close" id="close-inspector" aria-label="Close candidate inspector">×</button></div>
+      <div class="inspector-identity"><div class="inspector-avatar" id="inspector-avatar">FB</div><h2 id="inspector-name">Select a candidate</h2><p class="muted" id="inspector-details">Open a row to inspect recruitment details.</p></div>
+      <div id="inspector-editor" hidden>
+        <div class="inspector-section-title">RECRUITMENT EVIDENCE</div>
+        <div class="candidate-summary-inspector" id="candidate-summary-inspector"></div>
+        <div class="inspector-section-title">WORKPLACE HISTORY</div>
+        <div id="candidate-history-map" class="history-map" aria-label="Map of recorded candidate workplaces"></div>
+        <p id="history-evidence" class="history-evidence">No geocoded workplace history available.</p>
+        <div id="nearest-company" class="nearest-company">Closest public-transport operator: not assessed.</div>
+        <div class="inspector-section-title">RECRUITMENT</div>
+        <label class="field">Pipeline stage
+          <select id="edit-stage"><option value="new">New</option><option value="reviewing">Reviewing</option><option value="shortlisted">Shortlisted</option><option value="contacted">Contacted</option><option value="interview">Interview</option><option value="rejected">Rejected</option></select>
+        </label>
+        <label class="field">Recruiter notes<textarea rows="7" id="edit-notes" placeholder="Add interview feedback, next steps, or useful context…"></textarea></label>
+        <div class="inspector-actions"><button type="button" class="primary" id="save-edit">Save changes</button><a id="open-link" target="_blank" rel="noopener noreferrer">Open source profile ↗</a></div>
+      </div>
+    </aside>
+    <aside class="inspector company-inspector" id="company-inspector" aria-label="Employer inspector"><div class="inspector-top"><span class="overline">COMPANY RECORD</span><button type="button" class="close" id="close-company-inspector" aria-label="Close company inspector">×</button></div><div id="company-inspector-body" class="company-inspector-body"></div></aside>
+
+    <aside class="inspector contract-inspector" id="contract-inspector" aria-label="Assignment editor" aria-hidden="true">
+      <div class="inspector-top"><span class="overline">CONTRACT RECORD</span><button type="button" class="close" id="close-contract-inspector" aria-label="Close contract editor">×</button></div>
+      <form id="contract-form" class="contract-form" novalidate>
+        <div class="contract-form-title"><h2 id="contract-form-heading">New assignment</h2></div>
+        <input type="hidden" id="contract-id">
+        <label class="contract-field">Candidate directory<select id="contract-candidate-url"><option value="">Manual candidate / no linked profile</option></select></label>
+        <label class="contract-field">Candidate name <span aria-hidden="true">*</span><input id="contract-candidate-name" type="text" maxlength="160" required autocomplete="off" placeholder="Full name"></label>
+        <label class="contract-field">Role / position <span aria-hidden="true">*</span><input id="contract-role" type="text" maxlength="180" required placeholder="e.g. Mécanicien poids lourds"></label>
+        <label class="contract-field">Employer (group entity) <span aria-hidden="true">*</span><select id="contract-entity" required><option>RS Univers Industrie</option><option>RS Univers Consulting</option><option>Mantingo</option></select></label>
+        <label class="contract-field">Client company / site <span aria-hidden="true">*</span><input id="contract-client" type="text" maxlength="200" required placeholder="e.g. Keolis – site"></label>
+        <div class="contract-two-cols">
+          <label class="contract-field">Assignment type<select id="contract-type"><option value="subcontracting">Sous-traitance</option><option value="cdi">CDI</option><option value="cdd">CDD</option><option value="other">Other</option></select></label>
+          <label class="contract-field">Assignment status<select id="contract-status"><option value="planned">Planned</option><option value="active">Active</option><option value="on_hold">On hold</option><option value="completed">Completed</option><option value="ended">Ended</option></select></label>
+        </div>
+        <div class="contract-section-label">FIRST TRIAL PERIOD</div>
+        <div class="contract-two-cols">
+          <label class="contract-field">Start date <span aria-hidden="true">*</span><input id="contract-start" type="date" required></label>
+          <label class="contract-field">First period ends <span aria-hidden="true">*</span><input id="contract-first-end" type="date" required></label>
+        </div>
+        <div id="contract-date-preview" class="contract-date-preview">Enter dates to see the countdown.</div>
+        <div class="contract-section-label">RENEWAL — MANUAL CONFIRMATION</div>
+        <div class="contract-two-cols">
+          <label class="contract-field">Renewal status<select id="contract-renewal"><option value="not_requested">Not requested</option><option value="under_review">Under review</option><option value="confirmed">Confirmed</option><option value="declined">Declined</option></select></label>
+          <label class="contract-field">Renewal end<input id="contract-renewal-end" type="date" disabled></label>
+        </div>
+        <div class="contract-section-label">CLIENT HIRING INTENTION</div>
+        <label class="contract-field">Client decision<select id="contract-hire"><option value="pending">Awaiting decision</option><option value="yes">Will hire — confirmed intention</option><option value="no">Will not hire — confirmed intention</option></select></label>
+        <label class="contract-field">Recruiter notes<textarea id="contract-notes" rows="3" maxlength="5000" placeholder="Confirmation, follow-up, decision date, evidence…"></textarea></label>
+        <p class="contract-form-help">Client decisions represent stated intentions, not signed employment contracts. Renewals require explicit confirmation.</p>
+        <div id="contract-form-error" class="contract-error" role="alert" hidden></div>
+        <div class="contract-form-actions"><button type="submit" class="primary" id="contract-save">Save assignment</button><button type="button" class="soft" id="contract-cancel">Cancel</button></div>
+      </form>
+    </aside>
+  </div>
+  <input type="file" id="json-file" accept="application/json,.json" hidden>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="/atlas/assets/leaflet.js"></script>
+  <script src="/v21-intelligence.js"></script>
+  <script src="/app.js"></script>
+  <script src="/v24-contracts.js"></script>
+</body>
+</html>

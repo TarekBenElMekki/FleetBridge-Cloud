@@ -1,0 +1,26 @@
+/* FleetBridge V2.5 login. Single authorized stylesheet, no secondary visual layers. */
+:root{font-family:Inter,'Segoe UI Variable','Segoe UI',Arial,sans-serif;font-synthesis:none;color-scheme:light;color:#30404b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100dvh;display:flex;flex-direction:column;background:#f6f7f8}
+.access-header{height:56px;flex:none;background:#fff;border-bottom:1px solid #e1e6e9}
+.header-inner{max-width:1100px;height:100%;margin:auto;padding:0 26px;display:flex;align-items:center}
+.access-brand{display:flex;gap:9px;align-items:center}
+.access-brand img{width:25px;height:25px;object-fit:contain;border-radius:2px}
+.access-brand strong{font-size:14px;font-weight:680;letter-spacing:-.2px;color:#30424e}
+.access-main{flex:1;display:flex;justify-content:center;align-items:center;padding:25px}
+.access-panel{width:min(100%,365px);border:1px solid #dae1e5;background:#fff;border-radius:2px;box-shadow:0 2px 9px rgba(40,55,68,.04)}
+.panel-body{padding:28px 29px 30px}
+h1{font-size:20px;line-height:1.3;margin:0 0 23px;font-weight:660;color:#30404d;letter-spacing:-.3px}
+label{display:block;margin-bottom:8px;font-size:12px;font-weight:640;color:#4c606e}
+.pin-wrap{height:40px;display:flex;align-items:center;border-radius:2px;border:1px solid #cad5dc;background:#fff;transition:border-color .13s,box-shadow .13s}
+.pin-wrap:focus-within{border-color:#819ba9;box-shadow:0 0 0 2px #eff3f5}
+#pin{flex:1;min-width:0;height:100%;border:0;outline:0;padding:0 12px;background:transparent;color:#314654;font-family:inherit;font-size:16px;font-weight:570;letter-spacing:.2em}
+#pin::placeholder{color:#b7c1c7}
+.visibility{height:100%;border:0;border-left:1px solid #e6eaed;padding:0 12px;background:#fafbfb;color:#617480;font:550 11px inherit;cursor:pointer}
+.visibility:hover{background:#f2f5f6}
+#feedback{min-height:17px;margin:7px 0 12px;color:#995357;font-size:11px;line-height:1.4}
+.submit{width:100%;height:40px;border:1px solid #3b5668;border-radius:2px;background:#3b5668;padding:0 13px;color:white;font:625 12px inherit;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.submit:hover{background:#304959}.submit:disabled{background:#8e9ea8;border-color:#8e9ea8;cursor:wait}
+.visibility:focus-visible,.submit:focus-visible{outline:2px solid #6c8a9b;outline-offset:2px}
+@media(max-width:550px){.header-inner{padding:0 16px}.panel-body{padding:24px}.access-main{padding:14px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

@@ -1,0 +1,121 @@
+/* FleetBridge 2.3 — restrained internal CRM. The table and selected record are primary.
+   Keeps the current information architecture and API untouched. */
+:root,html[data-theme="light"]{
+  color-scheme:light;
+  --v2-bg:#f6f7f8; --v2-nav:#fff; --v2-surface:#fff; --v2-raised:#f4f5f6;
+  --v2-input:#fff; --v2-heading:#26313a; --v2-text:#35414a;
+  --v2-muted:#65717b; --v2-subtle:#8b959d; --v2-line:#e2e6e9;
+  --v2-accent:#4d6577; --v2-accent-bg:#eef2f4; --v2-hover:#f5f7f8;
+  --v2-focus:#657e8c; --v2-shadow:none;
+  font-family:Inter,'Segoe UI Variable','Segoe UI',sans-serif;
+}
+html,body,.shell,.main,.view{background:#f6f7f8!important;color:#35414a}
+body{font-size:12px}
+/* Quiet identity and a single work navigation. */
+.sidebar{width:186px!important;background:#fff;border-right:1px solid #e4e7ea;padding:12px 8px 8px!important}
+.brand{padding:4px 9px 22px!important;gap:8px}
+.brandmark{width:26px!important;height:26px!important;border-radius:2px!important}
+.brand-copy strong{font-size:14px!important;letter-spacing:-.3px;font-weight:700;color:#26323a}
+.brand small{font-size:10px!important;letter-spacing:0!important;font-weight:400;color:#858f98;margin-top:1px}
+.nav-label{text-transform:none!important;letter-spacing:0!important;font-size:10px!important;font-weight:600!important;color:#9aa2a9;margin:10px 9px 7px!important}
+.nav{min-height:35px!important;padding:7px 10px!important;gap:9px!important;font-size:11.5px!important;font-weight:560!important;border-radius:2px!important;margin:1px 0!important;color:#596570!important}
+.nav svg{width:15px!important;height:15px!important}
+.nav.active{background:#eef1f3!important;color:#263b4b!important;box-shadow:inset 2px 0 #637b8a!important}
+.nav:hover{background:#f4f5f6!important}
+.nav-count{font-size:10px!important;color:#7d8991!important;background:transparent!important;border:0!important;font-weight:500!important;min-width:0!important}
+.sidebar-collapse{min-height:30px!important;padding:6px 10px!important;margin-top:8px;font-size:10.5px!important;color:#89949c;border-radius:2px!important}
+.sidebar-bottom{border-top:1px solid #eff0f1;padding:11px 10px 7px!important}
+.connection-title{display:flex;align-items:center;gap:7px;font-size:10.5px!important;color:#76828a!important;font-weight:500!important}
+.connection-title strong{font-weight:500!important}.green-dot{width:6px;height:6px;margin:0!important;background:#859b92!important;box-shadow:none!important}
+.connection-offline .green-dot{background:#b98686!important}
+/* Operational header, not a marketing panel. */
+.topbar{height:46px!important;min-height:46px!important;padding:0 16px!important;border-bottom:1px solid #e4e7e9;background:#fff!important;box-shadow:none!important}
+.breadcrumb{gap:0!important}.breadcrumb strong{font-size:13px!important;letter-spacing:-.1px!important;font-weight:650!important;color:#303b42!important}
+.header-caption,.topbar-status{display:none!important}
+.top-actions{gap:5px!important}.context-actions{gap:5px!important}
+.top-actions .soft,.lock-action{min-height:27px!important;height:27px!important;padding:4px 9px!important;font-size:10.5px!important;font-weight:550!important;border:1px solid #d9dfe3!important;background:#fff!important;border-radius:2px!important;color:#68747d!important;box-shadow:none!important}
+.top-actions .soft:hover,.lock-action:hover{background:#f4f6f7!important;border-color:#c5d0d6!important;color:#273a47!important}
+.top-actions .refresh-button{width:27px!important;min-width:27px!important;padding:0!important;display:inline-flex;justify-content:center;align-items:center;gap:0!important;line-height:1;border-color:transparent!important;background:transparent!important;color:#687780!important}
+.top-actions .refresh-button svg{width:14px;height:14px;stroke-width:1.7}
+.top-actions .refresh-button:hover{background:#f0f2f3!important;border-color:#e0e5e7!important}
+.lock-action{margin-left:6px!important}
+/* Let record tables take the visual priority; no oversized decorative summaries. */
+#crm.view.active,#companies-view.view.active{padding:11px 13px!important}
+.table-card,.directory-panel,.candidate-intelligence{width:100%!important;max-width:1270px!important;margin-left:0!important;margin-right:auto!important;background:#fff!important;border:1px solid #e0e5e8!important;border-radius:2px!important;box-shadow:none!important}
+.table-card,.directory-panel{border-top:1px solid #dfe4e7!important;min-height:0!important}
+.candidate-intelligence{min-height:72px!important;max-height:78px!important;padding:4px 14px!important;margin-bottom:9px!important;gap:14px!important}
+.radar-frame{width:93px!important;height:69px!important;flex:none;overflow:visible}
+.radar-frame svg{width:93px!important;height:75px!important}
+.radar-information h2{font-size:11.5px!important;font-weight:650!important;letter-spacing:0!important;margin:0 0 2px!important;color:#34424b}
+.radar-information p{margin:0!important;font-size:10.5px!important;color:#79858e!important}
+.radar-facts{font-size:10.5px!important;color:#536a7a!important;margin-top:1px!important;font-weight:550!important;line-height:1.3!important}
+.radar-information small{font-size:9px!important;color:#909ca4!important;margin-top:0!important}
+.radar-target{stroke:#8d9da7!important;fill:transparent!important;stroke-width:1.25!important}
+.radar-actual{stroke:#617888!important;fill:rgba(91,119,135,.10)!important;stroke-width:1.5!important}
+.table-top,.directory-panel .table-top{min-height:44px!important;padding:8px 13px!important;gap:8px!important;background:#fff!important;border-bottom:1px solid #e5e8eb!important;align-items:center!important}
+.table-heading h2,.table-top h2{font-size:13px!important;font-weight:650!important;letter-spacing:-.1px!important;line-height:1.2!important;color:#2c3941!important;margin:0!important}
+.table-top .muted,.table-top p{font-size:10px!important;color:#929ba2!important;margin:2px 0 0!important;line-height:1.1!important}
+.count-pill{background:#f1f3f4!important;border:1px solid #e4e8eb!important;color:#64737d!important;padding:1px 5px!important;font-size:10px!important;font-weight:550!important;border-radius:2px!important;vertical-align:1px!important}
+.table-tools{width:auto!important;gap:6px!important}
+.clear-filters{background:transparent!important;border:1px solid #d9e0e5!important;color:#617380!important;border-radius:2px!important;min-height:25px!important;padding:4px 8px!important;font-size:10px!important;font-weight:550!important;text-decoration:none!important}
+.clear-filters:hover{background:#f4f6f7!important}
+/* CRM column-header filters are integral to the first table row. */
+.table-scroll{background:#fff!important;overflow:auto!important;scrollbar-color:#d1d8dd transparent}
+.table-scroll table{table-layout:fixed!important;width:100%!important;max-width:none!important;min-width:820px!important;border-collapse:separate!important;border-spacing:0!important}
+.table-card thead th,.directory-panel thead th{position:sticky!important;top:0!important;z-index:5!important;height:62px!important;padding:7px 10px!important;background:#f8f9fa!important;color:#6c7880!important;border-bottom:1px solid #dce2e6!important;border-right:1px solid #edf0f2!important;text-transform:none!important;font-size:10px!important;letter-spacing:0!important;font-weight:600!important;white-space:normal!important;vertical-align:middle!important}
+.table-card thead th:first-child,.directory-panel thead th:first-child{padding-left:13px!important}
+.table-card thead th:last-child,.directory-panel thead th:last-child{border-right:0!important}
+.column-head{display:flex;flex-direction:column;align-items:stretch;gap:4px;min-width:0}
+.column-head>span{font-size:10px!important;line-height:12px!important;letter-spacing:0!important;color:#687780!important;font-weight:650!important;text-transform:none!important;white-space:nowrap}
+.head-filter{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;height:25px!important;min-height:25px!important;margin:0!important;padding:3px 7px!important;background:#fff!important;border:1px solid #dbe1e5!important;border-radius:2px!important;color:#3f505c!important;font:400 10.5px/16px Inter,'Segoe UI',sans-serif!important;letter-spacing:0!important;text-transform:none!important;outline-offset:1px!important;box-shadow:none!important}
+.head-filter::placeholder{color:#a0aab1!important}
+.head-filter:focus{border-color:#8298a6!important;outline:1px solid #d1dbe0!important}
+select.head-filter{padding:2px 4px!important;cursor:pointer;appearance:auto!important}
+.actions-col{font-size:10px!important;color:#76838b!important}
+.table-card th:nth-child(1),.table-card td:nth-child(1){width:39%!important}
+.table-card th:nth-child(2),.table-card td:nth-child(2){width:22%!important}
+.table-card th:nth-child(3),.table-card td:nth-child(3){width:16%!important}
+.table-card th:nth-child(4),.table-card td:nth-child(4){width:16%!important}
+.table-card th:nth-child(5),.table-card td:nth-child(5){width:7%!important}
+.directory-panel th:nth-child(1),.directory-panel td:nth-child(1){width:29%!important}
+.directory-panel th:nth-child(2),.directory-panel td:nth-child(2){width:15%!important}
+.directory-panel th:nth-child(3),.directory-panel td:nth-child(3){width:14%!important}
+.directory-panel th:nth-child(4),.directory-panel td:nth-child(4){width:18%!important}
+.directory-panel th:nth-child(5),.directory-panel td:nth-child(5){width:17%!important}
+.directory-panel th:nth-child(6),.directory-panel td:nth-child(6){width:7%!important}
+.table-card td,.directory-panel td{height:43px!important;min-height:43px!important;padding:5px 10px!important;border-bottom:1px solid #edf0f1!important;background:transparent!important;font-size:11px!important;line-height:1.22!important;color:#66737c!important;white-space:nowrap!important;overflow:hidden;text-overflow:ellipsis;vertical-align:middle!important}
+.table-card td:first-child,.directory-panel td:first-child{padding-left:13px!important}
+.table-card tbody tr,.directory-panel tbody tr{background:#fff!important;transition:background .09s ease!important}
+.table-card tbody tr:nth-child(even),.directory-panel tbody tr:nth-child(even){background:#fbfcfc!important}
+.table-card tbody tr:hover,.directory-panel tbody tr:hover{background:#f2f5f6!important}
+.table-card tbody tr.is-selected,.directory-panel tbody tr.is-selected{background:#edf2f5!important}
+.table-card tbody tr.is-selected td:first-child,.directory-panel tbody tr.is-selected td:first-child{box-shadow:inset 2px 0 #708693!important}
+.candidate-person{gap:8px!important}.candidate-avatar{width:23px!important;height:23px!important;min-width:23px!important;border-radius:2px!important;background:#eff2f3!important;color:#6e808a!important;font-size:9px!important;font-weight:650!important}
+.candidate-text{min-width:0;overflow:hidden;display:block!important}
+.candidate-text strong,.directory-panel .company-strong{font-size:11.5px!important;font-weight:650!important;color:#293944!important;letter-spacing:0!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.candidate-role{font-size:10px!important;margin-top:1px!important;line-height:12px!important;color:#89959d!important}
+.location-text,.location-missing,.source-cell{font-size:10.5px!important;color:#657780!important}
+.location-missing{color:#9aa4ab!important}
+.stage{font-size:9.5px!important;font-weight:600!important;line-height:16px!important;letter-spacing:0!important;padding:1px 6px!important;border-radius:2px!important;border:1px solid #e2e7e9!important;color:#677985!important;background:#f3f5f6!important}
+.stage[data-stage="new"]{background:#f4f5f6!important;color:#818d95!important;border-color:#e8ebed!important}
+.stage[data-stage="reviewing"]{background:#edf2f5!important;color:#526b7b!important;border-color:#dce6eb!important}
+.stage[data-stage="shortlisted"]{background:#edf4f1!important;color:#507364!important;border-color:#dceae2!important}
+.stage[data-stage="contacted"]{background:#f0f2f5!important;color:#67748a!important;border-color:#e2e6ec!important}
+.stage[data-stage="interview"]{background:#f6f3ec!important;color:#8b7650!important;border-color:#ebe4d8!important}
+.stage[data-stage="rejected"]{background:#f6f0f0!important;color:#8f7272!important;border-color:#ecdfdf!important}
+.review-link{min-height:23px!important;padding:3px 5px!important;border:0!important;background:transparent!important;color:#627b8a!important;font-size:10px!important;font-weight:600!important;text-decoration:underline!important;text-underline-offset:3px;border-radius:0!important;white-space:nowrap!important}
+.review-link:hover{color:#344e62!important;background:transparent!important}
+.directory-panel .company-sector{color:#5e7280!important;font-weight:550!important;font-size:10.5px!important}
+.table-footer{min-height:28px!important;padding:6px 12px!important;background:#fff!important;border-top:1px solid #edf0f2!important;color:#89939a!important;font-size:10px!important}
+.table-footer kbd{font-size:9px!important}
+/* Inspector is a utility sidebar, not a second focal panel. */
+.shell>.inspector,.company-inspector{width:315px!important;background:#fff!important;border-left:1px solid #e4e8ea!important}
+.inspector-top{height:46px!important;min-height:46px!important;background:#fafbfb!important}
+.inspector-identity{padding-top:13px!important}
+.inspector-avatar,.close,.history-map,.candidate-summary-inspector,.nearest-company,.company-action{border-radius:2px!important}
+.company-action{background:#f8f9fa!important;border:1px solid #e1e6e9!important}
+#toast{border-radius:2px!important;background:#fff!important;color:#34424b!important;border:1px solid #dce4e9!important;box-shadow:0 4px 15px #28384612!important;font-size:11px!important}
+@media(max-width:1030px){.sidebar{width:164px!important}.table-card,.directory-panel{max-width:none!important}.shell>.inspector,.company-inspector{width:295px!important}}
+@media(max-width:850px){.sidebar{width:58px!important}.table-scroll table{min-width:780px!important}.shell>.inspector.open{position:fixed;width:min(330px,94vw)!important;top:46px!important;right:0;bottom:0;z-index:50}}
+@media(max-width:620px){.topbar{padding:0 9px!important}.candidate-intelligence{min-height:76px!important}.radar-information small{display:none!important}.top-actions .soft{font-size:10px!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

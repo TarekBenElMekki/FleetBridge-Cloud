@@ -1,0 +1,57 @@
+/* v0.2 · Map-forward candidate review. Old optional panels are removed from DOM. */
+html,body{width:590px;max-height:780px}
+.app{min-height:240px}
+.topbar{height:62px;padding:11px 15px;gap:11px}
+.mark{width:36px;height:36px;flex:0 0 36px}
+.brand strong{font-size:16px;white-space:nowrap}
+.brand-tag{font-size:10px;letter-spacing:1.2px;margin-left:3px}
+.header-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+.atlas-link,.header-analyze{margin:0;padding:10px 11px;border-radius:9px;font-size:11px;font-weight:800;white-space:nowrap}
+.atlas-link{background:#ffffff14;border:1px solid #ffffff36;color:#f3f9f9}
+.header-analyze{background:#6ed3bf;border:1px solid #6ed3bf;color:#103b41;cursor:pointer}
+.header-analyze:hover{background:#94e5d5}
+.header-analyze:disabled{opacity:.5;cursor:wait}
+.error{margin:10px 15px;font-size:11px}
+.empty-state{padding:32px 24px}
+.empty-illustration{font-size:54px}
+.empty-state h2{font-size:17px}
+.candidate-card{padding:12px 15px;gap:11px}
+.avatar{width:42px;height:42px;border-radius:11px;font-size:17px}
+.candidate-head h2{font-size:16px;margin-bottom:3px}
+.candidate-head p{font-size:11px;margin-bottom:3px}
+.candidate-head span,.candidate-head small{display:block;font-size:10px;color:#8a9da7;margin-top:2px}
+.candidate-head .work-status{display:inline-block;width:fit-content;padding:4px 7px;margin:5px 0 3px;color:#056558;background:#dff5ef;border:1px solid #b4e5d6;border-radius:6px;font-size:10px;font-weight:750}
+.candidate-head .work-status[hidden]{display:none}
+.score-grid{padding:9px 15px 11px;gap:8px}
+.score-card{padding:10px 12px;border-radius:10px}
+.score-label{font-size:9px;letter-spacing:.8px}
+.score-main{margin:5px 0 7px}
+.score-main strong{font-size:24px}
+.score-main span{font-size:11px}
+.score-card p{font-size:10px;margin:7px 0 0;line-height:1.25;min-height:12px}
+.progress-track{height:4px}
+.section{margin:0 15px 10px;padding:13px;border-radius:11px}
+.section-top{margin-bottom:11px;gap:10px}
+.section-top h2{font-size:16px;margin-top:4px}
+.history-actions{display:flex;align-items:center;gap:7px}
+.count-pill{padding:7px 8px;white-space:nowrap}
+.complete-small{padding:7px 8px;background:#e5f0ef;color:#175f62;border:1px solid #d1e4e2;border-radius:8px;font-size:10px;font-weight:800;white-space:nowrap}
+.complete-small:disabled{opacity:.5}
+.map{height:284px}
+.map .region-label,.map .department-label{border:0;box-shadow:none;background:rgba(255,255,255,.92);border-radius:5px;padding:2px 5px;white-space:nowrap;text-align:center;color:#325b68;font-weight:750;pointer-events:none}
+.map .region-label{font-size:10px;color:#155969;background:#e6f6f3e8;border:1px solid #baded9}
+.map .department-label{font-size:9px;color:#536978;background:#fffefaed;border:1px solid #d9e2e4}
+.map .region-label:before,.map .department-label:before{display:none}
+.map-legend{justify-content:flex-start;margin:9px 0}
+.history-list{gap:5px}
+.history-row{padding:8px;border-radius:8px}
+.history-content b{font-size:11px}
+.history-content p{font-size:10px;margin:3px 0}
+.history-content small{font-size:10px}
+.nearby .section-intro{margin:0 0 7px}
+.nearby-options{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f1f6f6;border-radius:8px;padding:7px 9px;margin-bottom:8px}
+.nearby-options label{font-size:11px;font-weight:750;color:#365c65}
+.radius-control{display:flex;align-items:center;gap:6px;color:#5b747b;font-size:11px;font-weight:750}
+.radius-control input{box-sizing:border-box;width:76px;border:1px solid #bfd2d7;border-radius:6px;padding:5px 7px;font:inherit;text-align:right;background:white;color:#173e49}
+.nearby-row{padding:8px 0}
+.footer{padding:5px 15px 17px}

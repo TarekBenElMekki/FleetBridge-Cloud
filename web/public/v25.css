@@ -1,0 +1,116 @@
+/* FleetBridge V2.5 — Information earns its space. Quiet, institutional light UX.
+   Scope: presentation only; no changes to records, routing, Atlas, or authentication. */
+:root,html[data-theme="light"]{
+  --v2-bg:#f6f7f8;--v2-nav:#fff;--v2-surface:#fff;--v2-raised:#f5f6f7;
+  --v2-heading:#27323a;--v2-text:#34414a;--v2-muted:#65737d;--v2-subtle:#89949b;
+  --v2-line:#e1e5e8;--v2-accent:#465f70;--v2-accent-bg:#edf2f5;
+  --v2-hover:#f5f7f8;--v2-shadow:none;color-scheme:light;
+}
+html,body{font-family:Inter,'Segoe UI Variable','Segoe UI',Arial,sans-serif!important;background:#f6f7f8!important;color:#35414a!important}
+/* Identity: single brand, no redundant category tag or always-on online badge. */
+.sidebar{width:188px!important;padding:13px 8px 8px!important;background:#fff!important;border-color:#e2e6e8!important}
+.brand{padding:4px 9px 25px!important;gap:9px!important}
+.brandmark{width:25px!important;height:25px!important}
+.brand-copy strong{font-weight:690!important;font-size:14.3px!important;letter-spacing:-.22px!important}
+.nav-label,.brand-copy small{display:none!important}
+.nav{min-height:38px!important;padding:9px 11px!important;font-size:12px!important;font-weight:535!important;color:#52606a!important;margin:1px 0!important;border-radius:2px!important}
+.nav svg{width:15px!important;height:15px!important;color:#697983!important}
+.nav.active{background:#eef2f4!important;box-shadow:inset 2px 0 #506c7e!important;color:#2c4353!important;font-weight:660!important}
+.nav.active svg{color:#3a586b!important}
+.nav-count{font-size:10.5px!important;font-variant-numeric:tabular-nums!important;color:#6c7983!important}
+.sidebar-collapse{font-size:10.5px!important;border:0!important;margin-top:7px!important;color:#74828b!important}
+.sidebar-bottom{display:none!important}
+body.connection-offline .sidebar-bottom{display:block!important}
+body.connection-offline .connection-title{color:#935f60!important}
+body.connection-offline .green-dot{background:#aa6767!important}
+/* A single page title; functional actions are compact and quiet. */
+.topbar{height:49px!important;min-height:49px!important;padding:0 17px!important;background:#fff!important;border-color:#e0e5e9!important}
+.breadcrumb strong{font-size:13px!important;font-weight:675!important;color:#283641!important}
+.top-actions{gap:6px!important}
+.top-actions .soft,.lock-action{height:28px!important;min-height:28px!important;font-size:11px!important;padding:4px 9px!important;color:#576874!important;border-color:#dce2e5!important}
+.top-actions .refresh-button{width:28px!important;min-width:28px!important;padding:0!important;border:0!important;background:transparent!important}
+.top-actions .refresh-button svg{width:14px!important;height:14px!important}
+.top-actions .soft:focus-visible,.nav:focus-visible,.head-filter:focus-visible{outline:2px solid #6b899a!important;outline-offset:1px!important}
+/* Remove dashboard-style stats cards. Nav counts already cover the directory total. */
+#crm .crm-summary{display:none!important}
+#crm.view.active,#companies-view.view.active,#contracts.view.active{padding:13px 14px!important}
+.table-card,.directory-panel,.candidate-intelligence,.contracts-directory{border-radius:1px!important;box-shadow:none!important;border-color:#dde3e7!important}
+.table-card,.directory-panel{max-width:1480px!important}
+/* Radar is an evidence inspector, not a promotional chart: useful text only. */
+.candidate-intelligence{max-width:1480px!important;min-height:79px!important;max-height:88px!important;padding:6px 15px!important;margin-bottom:10px!important;gap:17px!important}
+.radar-information h2{font-size:12px!important;color:#2e3f4b!important;font-weight:650!important;margin:0 0 3px!important}
+.radar-information .radar-facts{font-size:11px!important;color:#485c6a!important}
+.radar-information small{font-size:10px!important;color:#86939b!important}
+/* Tables: stronger typographic rhythm, one compact record count, one filter row. */
+.table-top,.directory-panel .table-top{min-height:38px!important;padding:7px 13px!important;gap:8px!important}
+.table-heading h2,.table-top h2{display:flex;align-items:baseline;gap:5px;font-weight:520!important;font-size:11.5px!important;color:#61717b!important;letter-spacing:0!important}
+.table-top .muted,.table-top p{display:none!important}
+.count-pill{display:inline-block!important;background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;color:#2e414e!important;font-weight:720!important;font-size:12px!important;vertical-align:baseline!important}
+.table-card thead th,.directory-panel thead th,.contracts-table thead th{
+  height:62px!important;padding:7px 11px!important;background:#f7f8f9!important;
+  color:#5c6c77!important;border-bottom:1px solid #d9e1e5!important;
+  border-right:1px solid #edf0f1!important;font-size:11px!important;font-weight:620!important;
+}
+.column-head{gap:5px!important}
+.column-head>span{font-size:11px!important;line-height:13px!important;font-weight:650!important;color:#576773!important}
+.head-filter{height:27px!important;min-height:27px!important;padding:3px 8px!important;font-size:11.5px!important;line-height:17px!important;border-radius:2px!important;border-color:#d9e0e4!important}
+.head-filter::placeholder{color:#a0a9ae!important}
+select.head-filter{padding-left:6px!important}
+.table-card td,.directory-panel td{height:43px!important;min-height:43px!important;padding:5px 11px!important;color:#53636f!important;font-size:12px!important;line-height:1.3!important;border-color:#eef1f2!important}
+.table-card tbody tr:nth-child(even),.directory-panel tbody tr:nth-child(even){background:#fcfdfd!important}
+.table-card tbody tr:hover,.directory-panel tbody tr:hover{background:#f3f6f7!important}
+.table-card tbody tr.is-selected,.directory-panel tbody tr.is-selected{background:#eaf0f3!important}
+.table-card tbody tr.is-selected td:first-child,.directory-panel tbody tr.is-selected td:first-child{box-shadow:inset 2px 0 #56788b!important}
+.candidate-text strong,.directory-panel .company-strong{font-size:12.5px!important;font-weight:665!important;color:#283a46!important}
+.candidate-role{font-size:11px!important;color:#74838c!important;line-height:14px!important}
+.candidate-avatar{width:25px!important;height:25px!important;min-width:25px!important;font-size:10px!important}
+.location-text,.location-missing,.source-cell,.directory-panel .company-sector{font-size:11.5px!important;color:#63727d!important}
+.directory-panel tbody td.company-strong{display:table-cell!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.4!important;overflow-wrap:break-word!important}
+.directory-panel tbody tr{min-height:43px!important}
+.directory-panel tbody td{height:43px!important}
+.directory-panel th:nth-child(1),.directory-panel td:nth-child(1){width:35%!important}
+.directory-panel th:nth-child(2),.directory-panel td:nth-child(2){width:13%!important}
+.directory-panel th:nth-child(3),.directory-panel td:nth-child(3){width:17%!important}
+.directory-panel th:nth-child(4),.directory-panel td:nth-child(4){width:16%!important}
+.directory-panel th:nth-child(5),.directory-panel td:nth-child(5){width:12%!important}
+.directory-panel th:nth-child(6),.directory-panel td:nth-child(6){width:7%!important}
+.stage,.hire-badge,.contract-period{border-radius:2px!important;box-shadow:none!important}
+.stage{font-size:10px!important;padding:2px 6px!important;font-weight:570!important}
+.review-link,.contract-edit{font-size:11px!important;color:#526d7e!important;text-decoration:none!important;border-bottom:1px solid #acbec8!important}
+.review-link:hover,.contract-edit:hover{color:#24475b!important;border-bottom-color:#24475b!important}
+.table-footer{font-size:10.5px!important;color:#7f8d95!important;border-color:#e7ecee!important;padding:7px 13px!important;min-height:28px!important}
+/* Contracts: counts and decision checkpoints matter; decorative mini-labels do not. */
+#contracts .contracts-intro{display:none!important}
+.contracts-main{max-width:1480px!important;gap:10px!important}
+.organization{min-height:106px!important;padding:9px 14px!important;border-color:#dde3e7!important}
+.org-parent{margin-bottom:16px!important;gap:6px!important}
+.org-parent strong{font-size:12px!important;color:#334451!important;font-weight:660!important}
+.org-parent>span:last-child{display:none!important}
+.org-entity{min-height:39px!important;padding:9px 11px!important;background:#fafbfb!important;border-color:#e1e6e9!important}
+.org-company{font-size:11.5px!important;color:#364b58!important}
+.org-counters{font-size:10px!important;color:#74848d!important}
+.org-entity.is-active{background:#edf3f5!important;box-shadow:inset 2px 0 #597b8c!important}
+.contract-signals{min-height:36px!important;border-color:#e1e6e9!important}
+.contract-signals span{padding:7px 13px!important;font-size:11px!important;color:#667781!important}
+.contract-signals strong{font-size:12px!important;font-weight:700!important;color:#354853!important}
+.contracts-table-heading{min-height:36px!important;padding:8px 13px!important}
+.contracts-table-heading h2{font-size:12px!important;font-weight:620!important;color:#40515d!important}
+.contracts-table td{height:49px!important;padding:6px 11px!important;font-size:11.5px!important;color:#546670!important}
+.contract-candidate,.contract-date{font-size:12px!important;color:#344752!important}
+.contract-secondary{font-size:10.5px!important;margin-top:3px!important;color:#84929a!important}
+.hire-badge,.contract-period{font-size:10px!important}
+.contract-form-title{padding-top:13px!important}
+.contract-form-title h2{font-size:14px!important}
+.contract-field{font-size:11.5px!important}
+.contract-field input,.contract-field select,.contract-field textarea{font-size:12px!important;min-height:32px!important}
+.contract-section-label{font-size:10px!important;color:#687a86!important;letter-spacing:.3px!important}
+.contract-form-help{font-size:10.5px!important;line-height:1.45!important;color:#71828d!important}
+/* Inspectors: readable data, square internal surfaces, no shadows. */
+.shell>.inspector,.company-inspector,body.contracts-mode #contract-inspector.open{border-color:#dde4e7!important;box-shadow:none!important}
+.inspector-section-title{font-size:10px!important;letter-spacing:.45px!important;color:#75848e!important}
+#toast{border-color:#d7e0e4!important;box-shadow:0 4px 12px #24323c10!important}
+@media(max-width:1090px){.sidebar{width:174px!important}.directory-panel table{min-width:970px!important}.contracts-table{min-width:960px!important}}
+@media(max-width:850px){.sidebar{width:58px!important}.brand{padding:4px 6px 20px!important}.brand-copy{display:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Match the actual body cell width to the company header after the V2.4 table-cell repair. */
+.directory-panel tbody td.company-strong{width:35%!important}

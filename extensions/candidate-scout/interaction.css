@@ -1,0 +1,6 @@
+.interest-control{margin:0 18px 13px;padding:11px 13px;background:#fff;border-radius:11px;border:1px solid var(--line);display:grid;grid-template-columns:1fr 215px;gap:6px 12px;align-items:center}
+.interest-control label{font-size:11px;font-weight:800}
+.interest-control select{border:1px solid #dce7e9;background:#f8fbfb;color:#254858;padding:8px;border-radius:8px;font-size:11px}
+.interest-control small{grid-column:1/-1;color:#8b9ca7;font-size:10px}
+.requirement-checks{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px}
+.requirement{background:#fff8e7;border:1px solid #f0e4c6;color:#8d702f;border-radius:7px;padding:7px 9px;font-size:10px}

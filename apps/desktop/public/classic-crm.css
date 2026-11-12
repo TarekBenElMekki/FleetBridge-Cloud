@@ -1,0 +1,76 @@
+/* CRM Classic: restore FleetBridge's original Inter/Segoe typography and
+   prioritize the working table over dashboard cards and decoration. */
+:root {
+  font-family:Inter,'Segoe UI',system-ui,sans-serif;
+  color:#26364d;
+  background:#f6f8fb;
+}
+body,.shell { background:#f6f8fb; }
+.sidebar { width:220px;background:#fbfcfe;border-right:1px solid #e3e7ee;box-shadow:none; }
+.brand { letter-spacing:1.05px;font-size:14px;color:#2b3d55; }
+.brandmark { background:#3e669b;border:none;box-shadow:none;border-radius:7px; }
+.brand small { letter-spacing:1.3px;color:#96a1b0; }
+.nav { border-radius:6px;font-weight:560; }
+.nav.active { background:#edf2f8;border-color:#e2eaf3;color:#355b8a;box-shadow:inset 3px 0 #779dc9; }
+.topbar { height:62px;background:#fff;border-bottom:1px solid #e3e8ef;box-shadow:none; }
+.workspace-label { color:#778da7; }
+.device-tag { background:#f3f8f5;border-color:#e0eae5; }
+.page-head { min-height:0;padding:4px 0 18px;margin-bottom:0;background:none;border:0;border-bottom:1px solid #e2e7ee;border-radius:0;box-shadow:none; }
+.page-head h1 { font-size:24px;letter-spacing:-.5px;margin:5px 0 6px;color:#27384f;font-weight:700; }
+.page-head p { font-size:12px; }
+.overline { color:#7287a1;font-size:9.5px; }
+.primary { background:#3869a8;border-color:#3869a8;box-shadow:none; }
+.primary:hover { background:#2b5c9b;box-shadow:none; }
+.soft { background:#fff;box-shadow:none;border-color:#dce3ed; }
+.view { padding:24px 30px; }
+#crm.view.active { display:flex;flex-direction:column;overflow:hidden; }
+.crm-summary { display:flex;gap:0;align-items:center;min-height:66px;margin:0 0 14px;padding:0;background:transparent;border:0; }
+.crm-summary .stat {
+  flex:none;min-width:142px;min-height:0;
+  padding:8px 20px 8px 0;margin-right:21px;
+  border:0;border-right:1px solid #dfe6ee;border-radius:0;
+  background:transparent;box-shadow:none;
+  display:flex;gap:11px;align-items:baseline;
+}
+.crm-summary .stat::before { content:none; }
+.crm-summary .stat:last-child { border-right:0; }
+.crm-summary .stat span { font-size:11px;color:#7a8ba0;white-space:nowrap; }
+.crm-summary .stat strong { font-size:22px;font-weight:690;color:#2f4869;margin:0; }
+.table-card { flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid #dfe6ef;border-radius:8px;box-shadow:none;background:white; }
+.table-top { padding:17px 20px;flex:none;border-bottom:1px solid #e9edf3; }
+.table-top h2 { margin-bottom:4px;color:#30445e; }
+.table-top input { background:#fff;border-radius:6px; }
+.table-scroll { flex:1;min-height:0;max-height:none;overflow:auto; }
+table { table-layout:auto; }
+th { background:#f5f7fa;color:#667c95;font-size:10px;letter-spacing:.55px;padding:14px 18px; }
+td { padding:13px 18px;border-color:#edf0f4;color:#51667f; }
+tbody tr:hover { background:#f6f9fc; }
+td strong { font-size:12px;color:#29415f; }
+td button { font-size:12px; }
+.stage { background:#eef3f9;color:#496c95;border-radius:5px;font-size:10.5px; }
+.inspector { background:#fff;box-shadow:none;border-left:1px solid #e2e7ee; }
+.settings-view .page-head { padding-bottom:21px;margin-bottom:19px; }
+.settings-view .card { background:#fff;box-shadow:none;border-radius:8px; }
+.settings-view .card h2 { color:#2e455e; }
+
+/* Operator Atlas owns the entire map viewport: its existing nav, country
+   basemap, logo thumbtacks, facets, inspector and fullscreen controls. */
+body.atlas-mode .sidebar,body.atlas-mode .topbar,body.atlas-mode .inspector { display:none!important; }
+body.atlas-mode .main { flex:1;width:100%;height:100vh;overflow:hidden; }
+body.atlas-mode #map.view.active { display:block;flex:1;padding:0;margin:0;overflow:hidden;height:100vh; }
+#atlas-frame { border:0;width:100%;height:100%;display:block;background:#f4f7f9; }
+
+@media (max-width:980px) {
+  .sidebar { width:185px; }
+  .crm-summary { flex-wrap:wrap;gap:0;min-height:52px; }
+  .crm-summary .stat { min-width:115px;margin-right:12px;padding-right:12px; }
+  .page-head { flex-wrap:wrap; }
+}
+@media (max-width:750px) {
+  .sidebar { width:66px; }
+  .view { padding:18px; }
+  .crm-summary .stat { min-width:auto; }
+  .crm-summary .stat span { font-size:10px; }
+  .table-top { flex-wrap:wrap; }
+  .table-top input { width:100%;max-width:none; }
+}

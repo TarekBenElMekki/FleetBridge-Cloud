@@ -1,0 +1,5 @@
+/* Web-only clear preview mode. Local Desktop remains unchanged. */
+.web-preview-note { color:#49586a; font-size:11px; font-weight:550; letter-spacing:0; white-space:nowrap; }
+#import, #export, #new-contract, #logout, #atlas-template, #atlas-import, .atlas-actions, .sidebar-bottom, #save-edit, #open-link, #contract-save, #contract-cancel { display:none !important; }
+#edit-stage, #edit-notes { opacity:.8; pointer-events:none; }
+@media(max-width:940px){ .web-preview-note { white-space:normal; max-width:148px; } }

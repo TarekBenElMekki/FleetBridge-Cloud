@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>FleetBridge — Candidate report</title>
+  <link rel="stylesheet" href="assets/leaflet.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar">
+      <div class="identity">
+        <img src="icons/icon32.png" width="23" height="23" alt="" />
+        <strong>FleetBridge</strong>
+      </div>
+      <div class="report-title">Candidate report</div>
+      <button id="launchBtn" type="button" class="refresh" aria-label="Refresh report from current LinkedIn profile" title="Refresh report">↻</button>
+    </header>
+
+    <div id="error" class="error" role="alert" hidden></div>
+    <section id="emptyState" class="empty-state" aria-live="polite">
+      <h2 id="emptyMessage">Reading visible profile…</h2>
+      <p>Open a LinkedIn member profile to generate a report.</p>
+    </section>
+
+    <div id="results" hidden>
+      <section class="candidate-head">
+        <div class="candidate-identity">
+          <div class="avatar" id="candidateInitials" aria-hidden="true">?</div>
+          <div class="candidate-primary">
+            <h1 id="candidateName">Candidate</h1>
+            <p id="candidateHeadline"></p>
+            <div class="candidate-meta"><span id="candidatePlace"></span><span id="workStatus" class="work-status" hidden></span></div>
+          </div>
+        </div>
+        <div id="sourceStatus" class="evidence-note"></div>
+      </section>
+
+      <section class="score-strip" aria-label="Career indicators">
+        <div class="score">
+          <div class="score-heading"><span>Mobility signal</span><span class="score-number"><strong id="readinessScore">—</strong><span id="readinessSuffix"></span></span></div>
+          <div class="progress-track"><span id="readinessBar"></span></div>
+          <p id="readinessText"></p>
+        </div>
+        <div class="score">
+          <div class="score-heading"><span>Transport relevance</span><span class="score-number"><strong id="fitScore">—</strong><span id="fitSuffix"></span></span></div>
+          <div class="progress-track"><span id="fitBar"></span></div>
+          <p id="fitText"></p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="historyHeading">
+        <div class="section-top"><h2 id="historyHeading">Employment history</h2><span class="section-count" id="historyCount">0 roles</span></div>
+        <div id="map" class="map" role="img" aria-label="Map of approximate previous workplace locations"></div>
+        <div class="map-legend"><span><i class="legend-dot recent"></i> Latest</span><span><i class="legend-dot older"></i> Earlier</span><span>Approximate city centres</span></div>
+        <div id="historyList" class="history-list"></div>
+        <p id="mapNote" class="disclosure"></p>
+      </section>
+
+      <section id="qualificationsSection" class="section" aria-labelledby="qualificationsHeading" hidden>
+        <div class="section-top"><h2 id="qualificationsHeading">Qualifications mentioned</h2></div>
+        <div id="qualificationsList" class="qualification-list"></div>
+        <p class="disclosure">Reported in the visible profile; validity not verified.</p>
+      </section>
+
+      <section class="section nearby" aria-labelledby="employersHeading">
+        <div class="section-top"><h2 id="employersHeading">Nearby transport employers</h2><span class="section-count" id="nearestReference"></span></div>
+        <p id="nearbyIntro" class="section-intro"></p>
+        <div id="nearbyList" class="nearby-list"></div>
+        <p class="disclosure">Employer locations and distances are approximate. Listings are not confirmed vacancies.</p>
+      </section>
+    </div>
+  </main>
+  <script src="assets/leaflet.js"></script>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

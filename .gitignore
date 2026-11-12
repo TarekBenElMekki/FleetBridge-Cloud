@@ -1,0 +1,36 @@
+# Never commit real user records, profiles, access tokens, local state
+**/node_modules/
+**/.env
+**/.env.*
+!**/.env.example
+**/*.sqlite
+**/*.sqlite3
+**/*.db
+**/*.fbdb
+**/*-wal
+**/*-shm
+**/*.p12
+**/*.pfx
+**/*.pem
+**/*.key
+**/*.crt
+**/vault*
+**/Chrome/User Data/
+**/Preferences
+**/Secure Preferences
+**/Local Extension Settings/
+**/Session Storage/
+**/IndexedDB/
+**/Local Storage/
+**/UIBackups/
+**/backups/
+**/Backups/
+**/FleetBridge_Baselines/
+**/reports/private/
+**/*.bak
+**/*.backup.*
+**/*.log
+**/.vercel/
+**/dist/
+**/coverage/
+.DS_Store

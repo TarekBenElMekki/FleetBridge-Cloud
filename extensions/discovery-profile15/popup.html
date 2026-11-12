@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FleetBridge Discovery</title><link rel="stylesheet" href="style.css"></head>
+<body class="popup"><div class="shell">
+  <div class="eyebrow">FLEETBRIDGE / DISCOVERY</div><h1>Search Collector</h1>
+  <p>Capture organic links from the Google Search tab you opened. Review profiles in the side panel.</p>
+  <button id="capturePage" class="primary">Capture this Google page</button>
+  <label for="pages">Bounded Google page collection</label>
+  <select id="pages"><option value="5">Up to 5 pages</option><option value="10">Up to 10 pages</option><option value="20">Up to 20 pages</option></select>
+  <div class="two"><button id="start">Collect successive pages</button><button id="stop" class="danger">Stop</button></div>
+  <div id="message" class="notice" role="status">Ready.</div><div id="stats" class="minor"></div>
+  <hr><button id="review" class="secondary">Open candidate review sidebar</button>
+  <button id="dashboard" class="secondary">Open candidate database</button>
+  <small>Google collection: user-started, maximum 20 pages, about 30 seconds between pages. LinkedIn capture requires a separate click for each profile.</small>
+</div><script src="popup.js"></script></body></html>

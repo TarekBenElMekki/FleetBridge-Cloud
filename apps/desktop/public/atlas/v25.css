@@ -1,0 +1,19 @@
+/* FleetBridge Atlas embedded mode: eliminate gratuitous tier labels and extra tags. */
+:root,html[data-theme=light]{--a-bg:#f6f7f8;--a-panel:#fff;--a-raised:#f5f7f8;--a-text:#394b56;--a-heading:#2c404d;--a-muted:#647680;--a-subtle:#88969e;--a-line:#e0e6e9;--a-accent:#4c6a7a;--a-accent-bg:#edf3f5;--a-hover:#f4f7f8;--a-map-bg:#e9eff0}
+html.embedded .eyebrow,html.embedded .scope-tag,html.embedded .map-title .map-dot,html.embedded .map-title strong,html.embedded .map-title .map-separator,html.embedded .small-star{display:none!important}
+html.embedded .section-head h2,html.embedded .result-head h2,html.embedded .inspector-heading h2{font-size:12.5px!important;font-weight:665!important;color:#364b58!important;letter-spacing:0!important}
+html.embedded .filter-intro{padding:12px 13px 10px!important}
+html.embedded .sector-switch{background:#fafbfb!important;border-color:#e1e7e9!important;border-radius:2px!important;padding:8px 10px!important;margin:10px 0!important}
+html.embedded .sector-switch label{font-size:10px!important;letter-spacing:0!important;color:#6d7d87!important}
+html.embedded .sector-switch select{font-size:11.5px!important;border-radius:2px!important}
+html.embedded .sector-switch p{font-size:10px!important;color:#82929a!important}
+html.embedded .result-item{padding:9px 12px!important}
+html.embedded .result-name,html.embedded .company-name{font-size:12px!important;font-weight:670!important;color:#2e4554!important}
+html.embedded .map-toolbar{min-height:43px!important;background:#fff!important}
+html.embedded .map-title{font-size:11.5px!important;color:#536b79!important}
+html.embedded .map-tool-btn{border-radius:2px!important;background:#fff!important;color:#556e7d!important;border-color:#dfe5e8!important}
+html.embedded .map-tool-btn:hover{background:#f5f7f8!important}
+html.embedded .geo-breadcrumb{color:#496677!important;font-weight:650!important}
+html.embedded .inspector-heading{padding:12px 14px!important}
+html.embedded .empty-inspector .empty-icon,html.embedded .empty-inspector .empty-rule,html.embedded .empty-inspector>span{display:none!important}
+html.embedded .inspector-footer{font-size:10px!important;color:#8a979e!important}
